@@ -5,9 +5,18 @@ public class Usuario {
 
     private String nome;
     private String cpf;
-    private String datanascimento;
+    private String dataNascimento;
 
-    
+    public Usuario(){
+        
+    }
+
+
+    public Usuario(String nome, String cpf, String dataNascimento) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+    }
     public String getNome() {
         return nome;
     }
@@ -20,11 +29,11 @@ public class Usuario {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    public String getDatanascimento() {
-        return datanascimento;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
-    public void setDatanascimento(String datanascimento) {
-        this.datanascimento = datanascimento;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
   
    

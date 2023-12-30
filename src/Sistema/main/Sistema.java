@@ -104,19 +104,27 @@ public class Sistema {
         String nomeUsuario = in.nextLine();
         System.out.println("Digite o seu cpf");
         String cpf = in.nextLine();
+        System.out.println("Data de Nascimento");
+        String dataNascimento = in.nextLine();
 
         System.out.println("- }");
 
+           System.out.println("=========================================================");
 
+        System.out.println("{ - Produto");
+
+     
+
+         System.out.println("- }");
+
+   System.out.println("=========================================================");
         System.out.println(" { - Boleto");
 
         System.out.println("Valor a pagar");
         double valorPagar = Double.parseDouble(in.nextLine());
 
-
         System.out.println("Digite em quantas veses o Produto será parcelado ?");
         int numParcelasBoleto = Integer.parseInt(in.nextLine());
-
 
        LocalDate dataCompra = LocalDate.now();
        LocalDate dataVencimentoBoleto ;
@@ -130,7 +138,10 @@ public class Sistema {
         boleto.setDataVencimentoBoleto(dataVencimentoBoleto);
         boleto.setNumParcelasBoleto(numParcelasBoleto);
         boleto.setValorPagar(numParcelasBoleto);
-        Usuario usuario = new Usuario(nomeUsuario ,cpf,boleto);
+        Usuario usuario = new Usuario();
+        usuario.setNome(nomeUsuario);
+        usuario.setCpf(cpf);
+        usuario.setDataNascimento(cpf);
     //    Boleto boleto = new Boleto(dataCompra,dataVencimentoBoleto,numParcelasBoleto,valorCompra);
 
         usuarios.add(usuario);
