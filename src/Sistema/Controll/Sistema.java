@@ -1,4 +1,4 @@
-package Sistema.main;
+package Sistema.Controll;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -6,14 +6,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Sistema.Model.Boleto;
+import Sistema.Model.Produto;
 import Sistema.Model.Usuario;
+import Sistema.Model.UsuarioPagaBoleto;
 
 public class Sistema {
     
-    static ArrayList <Usuario> usuarios = new ArrayList<>();
-    static ArrayList <Boleto> boletos = new ArrayList<>();
+    static ArrayList <UsuarioPagaBoleto> usuariosPagamBoletos = new ArrayList<>();
+ //   static ArrayList <Boleto> boletos = new ArrayList<>();
     static Scanner in = new Scanner(System.in);
-    public static void main(String[] args) throws ParseException {
+    public static  int Sistema() {
 
         try {
 
@@ -42,16 +44,17 @@ public class Sistema {
             e.printStackTrace();
          
      }
+        return Sistema();
 }
 
-    private static void mostraDados() {
+    public static void mostraDados() {
 
         for (Usuario usuario : usuarios) {
 
     }
 }
 
-    private static void calcularParcelas() {
+    public static void calcularParcelas() {
 
         for (Boleto boleto : boletos) {
 
@@ -94,7 +97,7 @@ public class Sistema {
         }
      }
 
-    private static void cadatrarPagante()  {
+    public static void cadatrarPagante()  {
 
     // LocalDateTime dataAtualHoje;
    //  LocalDateTime dataVencimentoBoleto;
@@ -112,8 +115,6 @@ public class Sistema {
            System.out.println("=========================================================");
 
         System.out.println("{ - Produto");
-
-     
 
          System.out.println("- }");
 
@@ -143,8 +144,9 @@ public class Sistema {
         usuario.setCpf(cpf);
         usuario.setDataNascimento(cpf);
     //    Boleto boleto = new Boleto(dataCompra,dataVencimentoBoleto,numParcelasBoleto,valorCompra);
-
-        usuarios.add(usuario);
+         
+         UsuarioPagaBoleto usuarioPagaBoleto = new UsuarioPagaBoleto(usuario, null, boleto);
+         usuariosPagamBoletos.add(usuarioPagaBoleto);
     //    boletos.add(boleto);
  }
 }
