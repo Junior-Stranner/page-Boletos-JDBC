@@ -49,48 +49,50 @@ public class Sistema {
 
     public static void mostraDados() {
 
-        for (Usuario usuario : usuarios) {
-
-    }
+      for (UsuarioPagaBoleto usuarioPagaBoleto : usuariosPagamBoletos) {
+         
+      }
 }
 
     public static void calcularParcelas() {
 
-        for (Boleto boleto : boletos) {
+       
+      for (UsuarioPagaBoleto usuarioPagaBoleto : usuariosPagamBoletos) {
 
-                 System.out.println("Data da Compra : "+boleto.getDataCompra());
-                 System.out.println("Data de Vencimento : "+boleto.getDataVencimentoBoleto());
+        usuarioPagaBoleto.getBoleto().setValorPagar(usuarioPagaBoleto.getProduto().getValorProduto());
 
-                 System.out.println("Valor Total da Compra é de "+boleto.getValorCompra());
 
-             if(boleto.getDataVencimentoBoleto().isAfter(boleto.getDataCompra())){/* Postorior ou  maior ou depois de data atual*/
+                 System.out.println("Data da Compra : "+usuarioPagaBoleto.getBoleto().getDataCompra());
+                 System.out.println("Data de Vencimento : "+usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto());
+
+                 System.out.println("Valor Total da Compra é de "+usuarioPagaBoleto.getBoleto().getValorPagar());
+
+             if(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().isAfter(usuarioPagaBoleto.getBoleto().getDataCompra())){/* Postorior ou  maior ou depois de data atual*/
                 System.out.println("Boleto não Vencido"
                 +"\n ---------------");
 
                 
-            for(int parcela = 1; parcela <= boleto.getNumParcelasBoleto() ; parcela ++){
-              boleto.setDataVencimentoBoleto(boleto.getDataVencimentoBoleto().plusMonths(1));
+            for(int parcela = 1; parcela <= usuarioPagaBoleto.getBoleto().getNumParcelasBoleto() ; parcela ++){
+              usuarioPagaBoleto.getBoleto().setDataVencimentoBoleto(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().plusMonths(1));
 
               System.out.println("número de Parcelas : "+parcela+"x vezes "
-              + boleto.getDataVencimentoBoleto().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " do mês " + parcela);
+              + usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " do mês " + parcela);
 
               }
 
-            boleto.setValorCompra(boleto.getValorCompra() / boleto.getNumParcelasBoleto());
+             usuarioPagaBoleto.getBoleto().setValorPagar( usuarioPagaBoleto.getBoleto().getValorPagar() / usuarioPagaBoleto.getBoleto().getNumParcelasBoleto());
 
            //   System.out.println("Valor Total da Compra ! " +boleto.getValorCompra());
-              System.out.println("Valor Parcelado em  " +boleto.getNumParcelasBoleto()+"x vezes"+ " de "+boleto.getValorCompra());
+              System.out.println("Valor Parcelado em  " +usuarioPagaBoleto.getBoleto().getNumParcelasBoleto()+"x vezes"+ " de "+usuarioPagaBoleto.getBoleto().getValorCompra());
 
               }else{
 
-                 for(int parcela = 1; parcela <= boleto.getNumParcelasBoleto() ; parcela ++){
-                     boleto.setValorCompra(boleto.getValorCompra() * 0.05);
-              boleto.setDataVencimentoBoleto(boleto.getDataVencimentoBoleto().plusMonths(1));
+                 for(int parcela = 1; parcela <= usuarioPagaBoleto.getBoleto().getNumParcelasBoleto() ; parcela ++){
+                     usuarioPagaBoleto.getBoleto().setValorPagar(usuarioPagaBoleto.getBoleto().getValorPagar() * 0.05);
+              usuarioPagaBoleto.getBoleto().setDataVencimentoBoleto(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().plusMonths(1));
 
             
               }
-
-
                 System.out.println("Boleto Vencido - URGENTE");         
               }
                
@@ -98,7 +100,7 @@ public class Sistema {
      }
 
     public static void cadatrarPagante()  {
-
+      Produto produto = new Produto();
     // LocalDateTime dataAtualHoje;
    //  LocalDateTime dataVencimentoBoleto;
        System.out.println(" { - Cliente");
@@ -115,6 +117,8 @@ public class Sistema {
            System.out.println("=========================================================");
 
         System.out.println("{ - Produto");
+
+        produto.escolhaProdutos();
 
          System.out.println("- }");
 
@@ -145,7 +149,7 @@ public class Sistema {
         usuario.setDataNascimento(cpf);
     //    Boleto boleto = new Boleto(dataCompra,dataVencimentoBoleto,numParcelasBoleto,valorCompra);
          
-         UsuarioPagaBoleto usuarioPagaBoleto = new UsuarioPagaBoleto(usuario, null, boleto);
+         UsuarioPagaBoleto usuarioPagaBoleto = new UsuarioPagaBoleto(usuario, produto, boleto);
          usuariosPagamBoletos.add(usuarioPagaBoleto);
     //    boletos.add(boleto);
  }
