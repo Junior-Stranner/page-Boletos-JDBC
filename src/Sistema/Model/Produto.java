@@ -71,10 +71,10 @@ public class Produto {
         //-------------------------------------------------------------------------------------------
         if(opPs4 == 1){
           System.out.println("Adicionais para o produto ps4 "
-          +"1 - Controle Ps4 - 220 reais "
-          +"2 - 2x Controles Ps4 - 400 reais"
-          +"3 - Jogo GTA V - 120 reais "
-          +"4 - Jogo de sua escolha - (300 reais)");
+          +"\n 1 - Controle Ps4 - 220 reais "
+          +"\n 2 - 2x Controles Ps4 - 400 reais"
+          +"\n 3 - Jogo GTA V - 120 reais "
+          +"\n 4 - Jogo de sua escolha - (300 reais)");
           int adicionaisPs4 = Integer.parseInt(in.nextLine());
 
           switch(adicionaisPs4){
@@ -120,8 +120,8 @@ public class Produto {
        //=======================================================================================
         case 2: System.err.println(" Ps5"
         +"Deseja comprar um adicional"
-        +"1 - Sim "
-        +"2 - não ");
+        +"\n 1 - Sim "
+        +"\n 2 - não ");
         int opPs5 = Integer.parseInt(in.nextLine());
 
         
@@ -129,10 +129,10 @@ public class Produto {
         //-------------------------------------------------------------------------------------------
         if(opPs5 == 1){
           System.out.println("Adicionais para o produto ps5 "
-          +"1 - Controle Ps5 - 360 reais "
-          +"2 - 2x Controles Ps5 - 650 reais"
-          +"3 - Jogo GTA VI - 530 reais "
-          +"4 - Jogo de sua escolha - (450 reais)");
+          +"\n 1 - Controle Ps5 - 360 reais "
+          +"\n 2 - 2x Controles Ps5 - 650 reais"
+          +"\n 3 - Jogo GTA VI - 530 reais "
+          +"\n 4 - Jogo de sua escolha - (450 reais)");
           int adicionaisPs5 = Integer.parseInt(in.nextLine());
 
           switch(adicionaisPs5){
@@ -177,8 +177,8 @@ public class Produto {
        //=======================================================================================
         case 3: System.err.println(" Ps5 Slim"
         +"Deseja comprar um adicional"
-        +"1 - Sim "
-        +"2 - não ");
+        +"\n 1 - Sim "
+        +"\n 2 - não ");
         int opPs5Slim = Integer.parseInt(in.nextLine());
 
         
@@ -186,10 +186,10 @@ public class Produto {
         //-------------------------------------------------------------------------------------------
         if(opPs5Slim == 1){
           System.out.println("Adicionais para o produto ps5 Slim "
-          +"1 - Controle Ps5(Slim) - 380 reais "
-          +"2 - 2x Controles Ps5(Slim) - 700 reais"
-          +"3 - Jogo GTA VI - 530 reais "
-          +"4 - Jogo de sua escolha - (450 reais)");
+          +"\n 1 - Controle Ps5(Slim) - 380 reais "
+          +"\n 2 - 2x Controles Ps5(Slim) - 700 reais"
+          +"\n 3 - Jogo GTA VI - 530 reais "
+          +"\n 4 - Jogo de sua escolha - (450 reais)");
           int adicionaisPs5Slim = Integer.parseInt(in.nextLine());
 
           switch(adicionaisPs5Slim){
@@ -237,8 +237,8 @@ public class Produto {
        //=======================================================================================
         case 4: System.err.println(" Adicionais"
         +"Deseja continnuar comprando "
-        +"1 - Sim "
-        +"2 - não ");
+        +"\n 1 - Sim "
+        +"\n 2 - não ");
         int adicionais = Integer.parseInt(in.nextLine());
 
         
@@ -246,10 +246,10 @@ public class Produto {
         //-------------------------------------------------------------------------------------------
         if(adicionais == 1){
           System.out.println("Adicionais  "
-          +"1 - Call od Duty - 299 reais"
-          +"2 - Jogo Ea 2024 - 199 reais"
-          +"3 - Jogo GTA VI - 530 reais "
-          +"4 - Controle Vermelho/azul - 400");
+          +"\n 1 - Call od Duty - 299 reais"
+          +"\n 2 - Jogo Ea 2024 - 199 reais"
+          +"\n 3 - Jogo GTA VI - 530 reais "
+          +"\n 4 - Controle Vermelho/azul - 400");
           int adicionaisEscolha= Integer.parseInt(in.nextLine());
 
           switch(adicionaisEscolha){

@@ -16,36 +16,21 @@ public class Sistema {
  //   static ArrayList <Boleto> boletos = new ArrayList<>();
     static Scanner in = new Scanner(System.in);
     public static  int Sistema() {
-
-        try {
-
+   
              int op = 0;
 
-        while(op != 9){
-
-
+           while(op != 9){
             System.out.println("MENU "
             +"\n 1 - cadastrar pagante"
             +"\n 2 - Calcular Parcelas"
             +"\n 3 - Vizualiza dados do Pagante"
             +"\n 8 - Voltar e continuar a Gerando"
             +"\n 9 - Sair");
-            op = Integer.parseInt(in.nextLine());
-            switch(op){
-
-                case 1: cadatrarPagante();break;
-                case 2: calcularParcelas();break;
-                case 3: mostraDados();break;
-        
-            }
+           op = Integer.parseInt(in.nextLine());
+           
+       }
+          return op;
     }
-        } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-         
-     }
-        return Sistema();
-}
 
     public static void mostraDados() {
 
@@ -83,7 +68,7 @@ public class Sistema {
              usuarioPagaBoleto.getBoleto().setValorPagar( usuarioPagaBoleto.getBoleto().getValorPagar() / usuarioPagaBoleto.getBoleto().getNumParcelasBoleto());
 
            //   System.out.println("Valor Total da Compra ! " +boleto.getValorCompra());
-              System.out.println("Valor Parcelado em  " +usuarioPagaBoleto.getBoleto().getNumParcelasBoleto()+"x vezes"+ " de "+usuarioPagaBoleto.getBoleto().getValorCompra());
+              System.out.println("Valor Parcelado em  " +usuarioPagaBoleto.getBoleto().getNumParcelasBoleto()+"x vezes"+ " de "+usuarioPagaBoleto.getBoleto().getValorPagar());
 
               }else{
 

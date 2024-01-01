@@ -9,8 +9,6 @@ public class SistemaPrincipalTeste {
     try {
 
         int op = 0;
-
-   while(op != 9){
      
     op = Sistema.Sistema();
        switch(op){
@@ -19,13 +17,11 @@ public class SistemaPrincipalTeste {
            case 2: Sistema.calcularParcelas();break;
            case 3: Sistema.mostraDados();break;
    
-       }
 }
    } catch (Exception e) {
        // TODO: handle exception
        e.printStackTrace();
        System.out.println("Erro ao carregar o menu ....");
-    
 }
     
   }
