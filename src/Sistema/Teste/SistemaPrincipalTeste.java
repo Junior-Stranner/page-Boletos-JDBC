@@ -17,6 +17,8 @@ public class SistemaPrincipalTeste {
            case 1: Sistema.cadatrarPagante();break;
            case 2: Sistema.calcularParcelas();break;
            case 3: Sistema.mostraDados();break;
+           case 9: System.out.println("Saindo so Sistema ..");break;
+           default: System.out.println("opção não existente");break;
        }
    
 }

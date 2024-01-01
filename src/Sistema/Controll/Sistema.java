@@ -24,7 +24,6 @@ public class Sistema {
             +"\n 1 - cadastrar pagante"
             +"\n 2 - Calcular Parcelas"
             +"\n 3 - Vizualiza dados do Pagante"
-            +"\n 8 - Voltar e continuar a Gerando"
             +"\n 9 - Sair");
            return op = Integer.parseInt(in.nextLine());
            
