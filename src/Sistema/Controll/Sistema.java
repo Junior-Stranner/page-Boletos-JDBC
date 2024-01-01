@@ -19,23 +19,23 @@ public class Sistema {
    
              int op = 0;
 
-           while(op != 9){
+    
             System.out.println("MENU "
             +"\n 1 - cadastrar pagante"
             +"\n 2 - Calcular Parcelas"
             +"\n 3 - Vizualiza dados do Pagante"
             +"\n 8 - Voltar e continuar a Gerando"
             +"\n 9 - Sair");
-           op = Integer.parseInt(in.nextLine());
+           return op = Integer.parseInt(in.nextLine());
            
-       }
-          return op;
+  
     }
 
     public static void mostraDados() {
 
       for (UsuarioPagaBoleto usuarioPagaBoleto : usuariosPagamBoletos) {
          
+        System.out.println(usuariosPagamBoletos);
       }
 }
 
@@ -103,6 +103,7 @@ public class Sistema {
 
         System.out.println("{ - Produto");
 
+
         produto.escolhaProdutos();
 
          System.out.println("- }");
@@ -110,8 +111,7 @@ public class Sistema {
    System.out.println("=========================================================");
         System.out.println(" { - Boleto");
 
-        System.out.println("Valor a pagar");
-        double valorPagar = Double.parseDouble(in.nextLine());
+        System.out.println("Valor a pagar" +produto.getValorProduto());
 
         System.out.println("Digite em quantas veses o Produto será parcelado ?");
         int numParcelasBoleto = Integer.parseInt(in.nextLine());
@@ -122,12 +122,13 @@ public class Sistema {
 
        System.out.println("- }");
       
-  
+        double valorPagar = 0;
         Boleto boleto = new Boleto();
+        boleto.setValorPagar(valorPagar);
         boleto.setDataCompra(dataCompra);
         boleto.setDataVencimentoBoleto(dataVencimentoBoleto);
         boleto.setNumParcelasBoleto(numParcelasBoleto);
-        boleto.setValorPagar(numParcelasBoleto);
+        boleto.setValorPagar(valorPagar);
         Usuario usuario = new Usuario();
         usuario.setNome(nomeUsuario);
         usuario.setCpf(cpf);

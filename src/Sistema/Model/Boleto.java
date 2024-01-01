@@ -57,5 +57,13 @@ public  class Boleto {
     }
 
 
+
+    @Override
+    public String toString() {
+        return "Boleto [dataCompra=" + dataCompra + ", dataVencimentoBoleto=" + dataVencimentoBoleto
+                + ", numParcelasBoleto=" + numParcelasBoleto + ", valorPagar=" + valorPagar + "]";
+    }
+
+
     
 }

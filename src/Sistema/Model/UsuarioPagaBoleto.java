@@ -34,6 +34,11 @@ public UsuarioPagaBoleto(){
         this.boleto = boleto;
     }
 
+    @Override
+    public String toString() {
+        return "UsuarioPagaBoleto [usuario=" + usuario + ", produto=" + produto + ", boleto=" + boleto + "]";
+    }
+
 
     
 }

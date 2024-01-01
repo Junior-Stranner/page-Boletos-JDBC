@@ -48,10 +48,10 @@ public class Produto {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Produtos disponiveis"
-        +" 1 - Ps4 "
-        +" 2 - Ps5 "
-        +" 3 - Ps5 slim + GTA VI"
-        +" 4 - Acessórios");
+        +"\n  1 - Ps4 "
+        +"\n  2 - Ps5 "
+        +"\n  3 - Ps5 slim + GTA VI"
+        +"\n  4 - Acessórios");
         int escolhaProds = Integer.parseInt(in.nextLine());
 
         //==============3 opções disponiveis==========================
@@ -62,8 +62,8 @@ public class Produto {
          //=======================================================================================
         case 1: System.err.println(" Ps4"
         +"Deseja comprar um adicional"
-        +"1 - Sim "
-        +"2 - não ");
+        +"\n 1 - Sim "
+        +"\n 2 - não ");
         int opPs4 = Integer.parseInt(in.nextLine());
 
         
@@ -82,26 +82,26 @@ public class Produto {
             case 1: System.out.println("Escolha -> opção 1 -> Controle Ps4 - valor - 220 reais");
                     this.valorProduto += 2200 + 220;
                     System.out.println("Ps4 + 1 Controle Ps4 ");
-                    System.out.println("Valor total pagar "+valorProduto);
+                    System.out.println("Valor total pagar " +valorProduto);
                     break;
 
             case 2: System.out.println("Escolha -> opção 2 -> 2x Controle Ps4 - valor - 400 reais");
                    this.valorProduto += 2200 + 400;
                      System.out.println("Ps4 + 2 Controle Ps4 ");
-                     System.out.println("Valor total pagar "+valorProduto);                   
+                     System.out.println("Valor total pagar " +valorProduto);                   
                     break;
             
             case 3:System.out.println("Escolha -> opção 3 -> Jogo GTA V - valor - 120 reais");
                      this.valorProduto += 2200 + 120;               
                     System.out.println("Ps4 + GTA V ps4 ");
-                     System.out.println("Valor total pagar "+valorProduto);              
+                     System.out.println("Valor total pagar " +valorProduto);              
                     break;
 
             case 4:System.out.println("Digite o jogo que vc queira");
                     String jogoEscolhaps4 = in.nextLine();
                      this.valorProduto += 2200 + 300;
-                     System.out.println("Vc escolheu "+jogoEscolhaps4);
-                     System.out.println("Valor total pagar "+valorProduto);
+                     System.out.println("Vc escolheu " +jogoEscolhaps4);
+                     System.out.println("Valor total pagar " +valorProduto);
                     break;
 
           }
@@ -109,14 +109,14 @@ public class Produto {
             System.out.println("Vc escolheu apenas o Ps4 "
             +" Valor de 2200 Reais");
             this.valorProduto += 2200;
-            System.out.println("Valor a pagar "+valorProduto);
+            System.out.println("Valor a pagar " +valorProduto);
 
             System.out.println(" Adicionado ao seu carinho "
             +"Vc será redirecionado ao menu de compras...");
             break;
         }
         
-       //Opção numero 3 
+       //Opção numero 2 
        //=======================================================================================
         case 2: System.err.println(" Ps5"
         +"Deseja comprar um adicional"
@@ -140,26 +140,26 @@ public class Produto {
             case 1: System.out.println("Escolha -> opção 1 -> Controle Ps5 - valor - 360 reais");
                       this.valorProduto += 4000 + 360;
                       System.out.println("Ps5 + Controle ps5");
-                      System.out.println("Valor total pagar"+valorProduto);
+                      System.out.println("Valor total pagar" +valorProduto);
                     break;
 
             case 2: System.out.println("Escolha -> opção 2 -> 2x Controle Ps5 - valor - 650 reais");
                     this.valorProduto += 4000 + 650;
                     System.out.println("Ps5 + 2x Controle ps5");
-                    System.out.println("Valor total pagar"+valorProduto);
+                    System.out.println("Valor total pagar" +valorProduto);
                     break;
 
             case 3:  System.out.println("Escolha -> opção 3 -> GTA VI - valor - 530 reais");
                     this.valorProduto += 4000 + 530;
                     System.out.println("Ps5 + GTA VI");
-                    System.out.println("Valor total pagar"+valorProduto);
+                    System.out.println("Valor total pagar" +valorProduto);
                     break;     
                     
             case 4: System.out.println("Digite o jogo que vc queira");
                     String jogoEscolhaps5 = in.nextLine();
                      this.valorProduto += 4000 + 300;
-                     System.out.println("Vc escolheu "+jogoEscolhaps5);
-                     System.out.println("Valor total pagar "+valorProduto);
+                     System.out.println("Vc escolheu " +jogoEscolhaps5);
+                     System.out.println("Valor total pagar " +valorProduto);
     
                     break;     
           }
@@ -195,37 +195,38 @@ public class Produto {
           switch(adicionaisPs5Slim){
 
             case 1: System.out.println("Escolha -> opção 1 -> Controle Ps5(Slim) - valor - 380 reais");
-                      this.valorProduto += 4800 + 380;
+                      this.valorProduto += 5000 + 380;
                       System.out.println("Ps5 + Controle ps5");
-                      System.out.println("Valor total pagar"+valorProduto);
+                      System.out.println("Valor total pagar" +valorProduto);
                     break;
 
             case 2: System.out.println("Escolha -> opção 2 -> 2x Controle Ps5(Slim) - valor - 700 reais");
-                    this.valorProduto += 4800 + 700;
+                    this.valorProduto += 5000 + 700;
                     System.out.println("Ps5 + 2x Controle ps5 (Slim)");
-                    System.out.println("Valor total pagar"+valorProduto);
+                    System.out.println("Valor total pagar" +valorProduto);
                     break;
 
             case 3:  System.out.println("Escolha -> opção 3 -> GTA VI - valor - 530 reais");
-                    this.valorProduto += 4800 + 530;
+                    this.valorProduto += 5000 + 530;
                     System.out.println("Ps5 + GTA VI");
-                    System.out.println("Valor total pagar"+valorProduto);
+                    System.out.println("Valor total pagar" +valorProduto);
                     break;     
                     
             case 4: System.out.println("Digite o jogo que vc queira");
                     String jogoEscolhaps5Slim = in.nextLine();
-                     this.valorProduto += 4800 + 300;
-                     System.out.println("Vc escolheu "+jogoEscolhaps5Slim);
-                     System.out.println("Valor total pagar "+valorProduto);
+                     this.valorProduto += 5000 + 300;
+                     System.out.println("Vc escolheu " +jogoEscolhaps5Slim);
+                     System.out.println("Valor total pagar " +valorProduto);
     
                     break;     
 
           }
 
-        }else {
+        }
+        if(opPs5Slim == 2) {
             System.out.println("Vc escolheu apenas o Ps5 Slim"
-            +" Valor de 4800 Reais");
-            this.valorProduto += 4800;
+            +" Valor de 5000 Reais");
+            this.valorProduto += 5000;
 
             System.out.println(" Adicionado ao seu carinho "
             +"Vc será redirecionado ao menu de compras...");
@@ -257,28 +258,29 @@ public class Produto {
             case 1: System.out.println("Escolha -> opção 1 -> Jogo Call of Duty - valor - 299 reais");
                       this.valorProduto +=299;
                       System.out.println("Jogo Call of Duty ");
-                      System.out.println("Valor total pagar"+valorProduto);
+                      System.out.println("Valor total pagar" +valorProduto);
                     break;
 
             case 2: System.out.println("Escolha -> opção 2 -> Jogo Ea 2024 - valor - 700 reais");
                     this.valorProduto += 199;
                     System.out.println("Jogo Ea 2024");
-                    System.out.println("Valor total pagar"+valorProduto);
+                    System.out.println("Valor total pagar" +valorProduto);
                     break;
 
             case 3:  System.out.println("Escolha -> opção 3 -> GTA VI - valor - 530 reais");
                     this.valorProduto += 530;
                     System.out.println("Ps5 + GTA VI");
-                    System.out.println("Valor total pagar"+valorProduto);
+                    System.out.println("Valor total pagar" +valorProduto);
                     break;     
                     
             case 4: System.out.println("Controle Vermelho/azul");
                      this.valorProduto +=  400;
-                     System.out.println("Valor total pagar "+valorProduto);
+                     System.out.println("Valor total pagar " +valorProduto);
                     break;     
           }
 
-        }else {
+        }
+          if(adicionais == 2)  {
             System.out.println("Sair");
             break;
         }//-----------------------------------------------------------------------------------------
@@ -287,5 +289,14 @@ public class Produto {
         
         return this.valorProduto;
     }
+
+
+    @Override
+    public String toString() {
+      return "Produto [nomeProduto=" + nomeProduto + ", numProduto=" + numProduto + ", valorProduto=" + valorProduto
+          + "]";
+    }
+
+    
     
 }
