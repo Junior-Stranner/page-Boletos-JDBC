@@ -61,37 +61,36 @@ public class Sistema {
             for(int parcela = 1; parcela <= usuarioPagaBoleto.getBoleto().getNumParcelasBoleto() ; parcela ++){
               usuarioPagaBoleto.getBoleto().setDataVencimentoBoleto(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().plusMonths(1));
 
-                
-                double percentualJuros = 0.02;  // 2%
-                usuarioPagaBoleto.getBoleto().setPercentualJuros(percentualJuros);
+              double valorJuros = 5;
 
-               usuarioPagaBoleto.getBoleto().setValorJuros(usuarioPagaBoleto.getBoleto().getValorPagar() * (1+ percentualJuros));
-              if(parcela >= 6){
+              usuarioPagaBoleto.getBoleto().setValorPagar(usuarioPagaBoleto.getBoleto().getValorPagar() +  valorJuros);
+              usuarioPagaBoleto.getBoleto().setPercentualJuros((usuarioPagaBoleto.getBoleto().getValorPagar() - usuarioPagaBoleto.getBoleto().getNumParcelasBoleto()) / usuarioPagaBoleto.getBoleto().getNumParcelasBoleto() * 100);
 
               System.out.println("número de Parcelas : "+parcela+"x vezes "
-              + usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " do mês " + parcela);
-              System.out.println("Com juros " + percentualJuros * 100 + "%: " + usuarioPagaBoleto.getBoleto().getValorJuros());
-              }
+              + usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " do mês " + parcela+ "com valor de " +usuarioPagaBoleto.getBoleto().getValorPagar());
+              System.out.println("Com juros " + usuarioPagaBoleto.getBoleto().getPercentualJuros()+ "%: " + usuarioPagaBoleto.getBoleto().getValorJuros());
             }
+        
+    
 
              usuarioPagaBoleto.getBoleto().setValorPagar( usuarioPagaBoleto.getBoleto().getValorPagar() / usuarioPagaBoleto.getBoleto().getNumParcelasBoleto());
 
            //   System.out.println("Valor Total da Compra ! " +boleto.getValorCompra());
               System.out.println("Valor Parcelado em  " +usuarioPagaBoleto.getBoleto().getNumParcelasBoleto()+"x vezes"+ " de "+usuarioPagaBoleto.getBoleto().getValorPagar()+ " mais "+usuarioPagaBoleto.getBoleto().getPercentualJuros()+ " de juros ");
 
-              }else{
+         }else{
 
                  for(int parcela = 1; parcela <= usuarioPagaBoleto.getBoleto().getNumParcelasBoleto() ; parcela ++){
                      usuarioPagaBoleto.getBoleto().setValorPagar(usuarioPagaBoleto.getBoleto().getValorPagar() * 0.30);
-              usuarioPagaBoleto.getBoleto().setDataVencimentoBoleto(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().plusMonths(1));
+                     usuarioPagaBoleto.getBoleto().setDataVencimentoBoleto(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().plusMonths(1));
 
             
               }
                 System.out.println("Boleto Vencido - URGENTE");         
               }
-               
-        }
-     }
+      }
+  
+  }
 
     public static void cadatrarPagante()  {
       Produto produto = new Produto();
@@ -151,5 +150,5 @@ public class Sistema {
          UsuarioPagaBoleto usuarioPagaBoleto = new UsuarioPagaBoleto(usuario, produto, boleto);
          usuariosPagamBoletos.add(usuarioPagaBoleto);
     //    boletos.add(boleto);
- }
-}
+       }
+  }
