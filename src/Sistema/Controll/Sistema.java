@@ -55,24 +55,34 @@ public class Sistema {
                 System.out.println("Boleto não Vencido"
                 +"\n ---------------");
 
-                
+                  System.out.println("Juros a partir da 6x parcela de 2%");
+
+            
             for(int parcela = 1; parcela <= usuarioPagaBoleto.getBoleto().getNumParcelasBoleto() ; parcela ++){
               usuarioPagaBoleto.getBoleto().setDataVencimentoBoleto(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().plusMonths(1));
 
+                
+                double percentualJuros = 0.02;  // 2%
+                usuarioPagaBoleto.getBoleto().setPercentualJuros(percentualJuros);
+
+               usuarioPagaBoleto.getBoleto().setValorJuros(usuarioPagaBoleto.getBoleto().getValorPagar() * (1+ percentualJuros));
+              if(parcela >= 6){
+
               System.out.println("número de Parcelas : "+parcela+"x vezes "
               + usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " do mês " + parcela);
-
+              System.out.println("Com juros " + percentualJuros * 100 + "%: " + usuarioPagaBoleto.getBoleto().getValorJuros());
               }
+            }
 
              usuarioPagaBoleto.getBoleto().setValorPagar( usuarioPagaBoleto.getBoleto().getValorPagar() / usuarioPagaBoleto.getBoleto().getNumParcelasBoleto());
 
            //   System.out.println("Valor Total da Compra ! " +boleto.getValorCompra());
-              System.out.println("Valor Parcelado em  " +usuarioPagaBoleto.getBoleto().getNumParcelasBoleto()+"x vezes"+ " de "+usuarioPagaBoleto.getBoleto().getValorPagar());
+              System.out.println("Valor Parcelado em  " +usuarioPagaBoleto.getBoleto().getNumParcelasBoleto()+"x vezes"+ " de "+usuarioPagaBoleto.getBoleto().getValorPagar()+ " mais "+usuarioPagaBoleto.getBoleto().getPercentualJuros()+ " de juros ");
 
               }else{
 
                  for(int parcela = 1; parcela <= usuarioPagaBoleto.getBoleto().getNumParcelasBoleto() ; parcela ++){
-                     usuarioPagaBoleto.getBoleto().setValorPagar(usuarioPagaBoleto.getBoleto().getValorPagar() * 0.05);
+                     usuarioPagaBoleto.getBoleto().setValorPagar(usuarioPagaBoleto.getBoleto().getValorPagar() * 0.30);
               usuarioPagaBoleto.getBoleto().setDataVencimentoBoleto(usuarioPagaBoleto.getBoleto().getDataVencimentoBoleto().plusMonths(1));
 
             
@@ -123,11 +133,15 @@ public class Sistema {
       
         double valorPagar = 0;
         Boleto boleto = new Boleto();
+
         boleto.setValorPagar(valorPagar);
         boleto.setDataCompra(dataCompra);
         boleto.setDataVencimentoBoleto(dataVencimentoBoleto);
         boleto.setNumParcelasBoleto(numParcelasBoleto);
         boleto.setValorPagar(valorPagar);
+        boleto.setValorJuros(boleto.getValorJuros());
+        boleto.setPercentualJuros(boleto.getPercentualJuros());
+
         Usuario usuario = new Usuario();
         usuario.setNome(nomeUsuario);
         usuario.setCpf(cpf);

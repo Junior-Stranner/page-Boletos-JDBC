@@ -8,18 +8,47 @@ public  class Boleto {
     private LocalDate dataVencimentoBoleto;
     private int numParcelasBoleto;
     private double valorPagar;
+    private double valorJuros;
+    private double percentualJuros;
 
     public Boleto(){
         
     }
 
-    
 
-    public Boleto(LocalDate dataCompra, LocalDate dataVencimentoBoleto, int numParcelasBoleto, double valorPagar) {
+
+    public Boleto(LocalDate dataCompra, LocalDate dataVencimentoBoleto, int numParcelasBoleto, double valorPagar,
+            double valorJuros, double percentualJuros) {
         this.dataCompra = dataCompra;
         this.dataVencimentoBoleto = dataVencimentoBoleto;
         this.numParcelasBoleto = numParcelasBoleto;
         this.valorPagar = valorPagar;
+        this.valorJuros = valorJuros;
+        this.percentualJuros = percentualJuros;
+    }
+
+
+
+    public double getValorJuros() {
+        return valorJuros;
+    }
+
+
+
+    public void setValorJuros(double valorJuros) {
+        this.valorJuros = valorJuros;
+    }
+
+
+
+    public void setPercentualJuros(double percentualJuros) {
+        this.percentualJuros = percentualJuros;
+    }
+
+
+
+    public double getPercentualJuros() {
+        return percentualJuros;
     }
 
 
@@ -61,7 +90,8 @@ public  class Boleto {
     @Override
     public String toString() {
         return "Boleto [dataCompra=" + dataCompra + ", dataVencimentoBoleto=" + dataVencimentoBoleto
-                + ", numParcelasBoleto=" + numParcelasBoleto + ", valorPagar=" + valorPagar + "]";
+                + ", numParcelasBoleto=" + numParcelasBoleto + ", valorPagar=" + valorPagar + ", valorJuros="
+                + valorJuros + ", percentualJuros=" + percentualJuros + "]";
     }
 
 
