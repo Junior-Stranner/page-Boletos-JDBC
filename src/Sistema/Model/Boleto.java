@@ -1,99 +1,108 @@
 package Sistema.Model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
-public  class Boleto {
+public class Boleto {
+    private int boletoId;
+    private String codigo_barras;
+    private float valor;
+    private LocalDateTime data_vencimento;
+    private LocalDateTime data_pagamento;
+    private Status status;
+    private Cliente clienteId;
+    private List<Pagamento> pagamentos;  // Lista de pagamentos relacionados a este boleto
 
-    private LocalDate dataCompra = LocalDate.now();
-    private LocalDate dataVencimentoBoleto;
-    private int numParcelasBoleto;
-    private double valorPagar;
-    private double valorJuros;
-    private double percentualJuros;
-
-    public Boleto(){
-        
+    public Boleto() {
     }
 
-
-
-    public Boleto(LocalDate dataCompra, LocalDate dataVencimentoBoleto, int numParcelasBoleto, double valorPagar,
-            double valorJuros, double percentualJuros) {
-        this.dataCompra = dataCompra;
-        this.dataVencimentoBoleto = dataVencimentoBoleto;
-        this.numParcelasBoleto = numParcelasBoleto;
-        this.valorPagar = valorPagar;
-        this.valorJuros = valorJuros;
-        this.percentualJuros = percentualJuros;
+    public Boleto(int boletoId, String codigo_barras, float valor, LocalDateTime data_vencimento, LocalDateTime data_pagamento, Status status, List<Pagamento> pagamentos) {
+        this.boletoId = boletoId;
+        this.codigo_barras = codigo_barras;
+        this.valor = valor;
+        this.data_vencimento = data_vencimento;
+        this.data_pagamento = data_pagamento;
+        this.status = status;
+        this.pagamentos = pagamentos;
     }
 
-
-
-    public double getValorJuros() {
-        return valorJuros;
+    public int getBoletoId() {
+        return boletoId;
     }
 
-
-
-    public void setValorJuros(double valorJuros) {
-        this.valorJuros = valorJuros;
+    public void setBoletoId(int boletoId) {
+        this.boletoId = boletoId;
     }
 
-
-
-    public void setPercentualJuros(double percentualJuros) {
-        this.percentualJuros = percentualJuros;
+    public String getCodigo_barras() {
+        return codigo_barras;
     }
 
-
-
-    public double getPercentualJuros() {
-        return percentualJuros;
+    public void setCodigo_barras(String codigo_barras) {
+        this.codigo_barras = codigo_barras;
     }
 
-
-
-    public LocalDate getDataCompra() {
-        return dataCompra;
+    public float getValor() {
+        return valor;
     }
 
-    public void setDataCompra(LocalDate dataCompra) {
-        this.dataCompra = dataCompra;
+    public void setValor(float valor) {
+        this.valor = valor;
     }
 
-    public LocalDate getDataVencimentoBoleto() {
-        return dataVencimentoBoleto;
+    public LocalDateTime getData_vencimento() {
+        return data_vencimento;
     }
 
-    public void setDataVencimentoBoleto(LocalDate dataVencimentoBoleto) {
-        this.dataVencimentoBoleto = dataVencimentoBoleto;
+    public void setData_vencimento(LocalDateTime data_vencimento) {
+        this.data_vencimento = data_vencimento;
     }
 
-    public int getNumParcelasBoleto() {
-        return numParcelasBoleto;
+    public LocalDateTime getData_pagamento() {
+        return data_pagamento;
     }
 
-    public void setNumParcelasBoleto(int numParcelasBoleto) {
-        this.numParcelasBoleto = numParcelasBoleto;
+    public void setData_pagamento(LocalDateTime data_pagamento) {
+        this.data_pagamento = data_pagamento;
     }
 
-    public double getValorPagar() {
-        return valorPagar;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setValorPagar(double valorPagar) {
-        this.valorPagar = valorPagar;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
+    public Cliente getClienteId() {
+        return clienteId;
+    }
 
+    public void setClienteId(Cliente clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public List<Pagamento> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(List<Pagamento> pagamentos) {
+        this.pagamentos = pagamentos;
+    }
 
     @Override
     public String toString() {
-        return "Boleto [dataCompra=" + dataCompra + ", dataVencimentoBoleto=" + dataVencimentoBoleto
-                + ", numParcelasBoleto=" + numParcelasBoleto + ", valorPagar=" + valorPagar + ", valorJuros="
-                + valorJuros + ", percentualJuros=" + percentualJuros + "]";
+        return "Boleto{" +
+                "boletoId=" + boletoId +
+                ", codigo_barras='" + codigo_barras + '\'' +
+                ", valor=" + valor +
+                ", data_vencimento=" + data_vencimento +
+                ", data_pagamento=" + data_pagamento +
+                ", status=" + status +
+                ", clienteId=" + clienteId +
+                ", pagamentos=" + pagamentos +
+                '}';
     }
-
-
-    
 }
