@@ -1,6 +1,5 @@
 package Sistema.view;
 
-import Sistema.Controll.ClienteController;
 import Sistema.Controll.UsuarioController;
 import java.util.Scanner;
 
@@ -16,7 +15,7 @@ public class UsuarioMenu {
 
     public static void usuarioMenu() {
         Scanner in = new Scanner(System.in);
-        int op = 0;
+        int op;
 
         try {
             do {
@@ -28,7 +27,7 @@ public class UsuarioMenu {
                         UsuarioController.usuarioTeste();
                         break;
                     case OP_CADASTRAR_USUARIO:
-                        UsuarioController.CadastrarUsuario();
+                        UsuarioController.cadastrarUsuario();
                         break;
                     case OP_MOSTRAR_DADOS_USUARIO:
                         UsuarioController.mostraUsuarios();
@@ -43,40 +42,36 @@ public class UsuarioMenu {
                         ClienteMenu.clienteMenu();
                         break;
                     case OP_VOLTAR:
-                        System.out.println("Voltando para o Sistema Principal");
+                        System.out.println("Voltando para o Sistema Principal...");
                         break;
                     default:
                         System.out.println("Opção inválida, tente novamente.");
                 }
-
             } while (op != OP_VOLTAR);
-        } catch (NumberFormatException e) {
-            System.out.println("Erro: Entrada inválida. Por favor, insira um número.");
         } catch (Exception e) {
             System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
-        } finally {
-            // Scanner fechado fora do método para evitar o fechamento do System.in
         }
     }
 
     private static void exibirMenu() {
-        System.out.println("User Menu"
-                + "\n " + OP_USUARIO_TESTE + " - Usuário Teste-(Criado auto)"
-                + "\n " + OP_CADASTRAR_USUARIO + " - Cadastrar Usuario"
-                + "\n " + OP_MOSTRAR_DADOS_USUARIO + " - Mostrar Dados Usuário"
+        System.out.println("\n📌 Menu de Usuário"
+                + "\n " + OP_USUARIO_TESTE + " - Criar Usuário de Teste"
+                + "\n " + OP_CADASTRAR_USUARIO + " - Cadastrar Usuário"
+                + "\n " + OP_MOSTRAR_DADOS_USUARIO + " - Mostrar Dados do Usuário"
                 + "\n " + OP_ATUALIZAR_USUARIO + " - Atualizar Usuário"
                 + "\n " + OP_DELETAR_USUARIO + " - Deletar Usuário"
-                + "\n " + OP_CLIENTE + " - Cliente"
+                + "\n " + OP_CLIENTE + " - Gerenciar Clientes"
                 + "\n " + OP_VOLTAR + " - Voltar ao Sistema Principal");
     }
 
     private static int obterEntradaUsuario(Scanner in) {
-        int op = 0;
-        try {
-            op = Integer.parseInt(in.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida. Tente novamente.");
+        while (true) {
+            try {
+                System.out.print("Escolha uma opção: ");
+                return Integer.parseInt(in.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Digite um número.");
+            }
         }
-        return op;
     }
 }

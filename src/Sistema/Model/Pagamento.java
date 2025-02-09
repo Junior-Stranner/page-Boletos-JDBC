@@ -1,5 +1,8 @@
 package Sistema.Model;
 
+import Sistema.Model.Boleto;
+import Sistema.Model.MetodoPagamento;
+
 import java.time.LocalDateTime;
 
 public class Pagamento {
@@ -7,18 +10,19 @@ public class Pagamento {
     private double valorPago;
     private LocalDateTime dataPagamento;
     private MetodoPagamento metodoPagamento;
-    private short boletoId;
+    private Boleto boleto; // Referência direta ao objeto Boleto
     private short clienteId;
     private Status status;
 
     public Pagamento() {
     }
 
-    public Pagamento(short pagId, double valorPago, LocalDateTime dataPagamento, MetodoPagamento metodoPagamento, Status status) {
+    public Pagamento(short pagId, double valorPago, LocalDateTime dataPagamento, MetodoPagamento metodoPagamento, Boleto boleto, Status status) {
         this.pagId = pagId;
         this.valorPago = valorPago;
         this.dataPagamento = dataPagamento;
         this.metodoPagamento = metodoPagamento;
+        this.boleto = boleto;
         this.status = status;
     }
 
@@ -54,6 +58,14 @@ public class Pagamento {
         this.metodoPagamento = metodoPagamento;
     }
 
+    public Boleto getBoleto() {
+        return boleto;
+    }
+
+    public void setBoleto(Boleto boleto) {
+        this.boleto = boleto;
+    }
+
     public Status getStatus() {
         return status;
     }
@@ -69,7 +81,7 @@ public class Pagamento {
                 ", valorPago=" + valorPago +
                 ", dataPagamento=" + dataPagamento +
                 ", metodoPagamento=" + metodoPagamento +
-                ", boletoId=" + boletoId +
+                ", boleto=" + boleto + // Exibindo objeto boleto
                 ", clienteId=" + clienteId +
                 ", status=" + status +
                 '}';

@@ -2,7 +2,6 @@ package Sistema.view;
 
 import Sistema.Controll.ClienteController;
 import Sistema.Controll.ProdutoController;
-
 import java.util.Scanner;
 
 public class ClienteMenu {
@@ -14,11 +13,11 @@ public class ClienteMenu {
     private static final int OP_PRODUTO = 5;
     private static final int OP_PAGAMENTO = 6;
     private static final int OP_BOLETOS = 7;
-    private static final int OP_VOLTA_USUARIO = 9;
+    private static final int OP_VOLTA_SISTEMA = 9;
 
     public static void clienteMenu() {
         Scanner in = new Scanner(System.in);
-        int op = 0;
+        int op;
 
         try {
             do {
@@ -42,45 +41,43 @@ public class ClienteMenu {
                         ProdutoMenu.produtoMenu();
                         break;
                     case OP_PAGAMENTO:
+                        PagamentoMenu.pagamentoMenu();
                         break;
                     case OP_BOLETOS:
+                        BoletoMenu.boletoMenu();
                         break;
-                    case OP_VOLTA_USUARIO:
-                        System.out.println("Voltando para o Sistema Principal");
-                        break;
+                    case OP_VOLTA_SISTEMA:
+                        System.out.println("🔙 Voltando para o Sistema Principal...");
+                        return; // Sai do método e retorna ao sistema principal
                     default:
-                        System.out.println("Opção inválida, tente novamente.");
+                        System.out.println("❌ Opção inválida! Tente novamente.");
                 }
-
-            } while (op != OP_VOLTA_USUARIO);
-        } catch (NumberFormatException e) {
-            System.out.println("Erro: Entrada inválida. Por favor, insira um número.");
+            } while (op != OP_VOLTA_SISTEMA);
         } catch (Exception e) {
-            System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
-        } finally {
-            // Scanner fechado fora do método para evitar o fechamento do System.in
+            System.out.println("⚠ Ocorreu um erro inesperado: " + e.getMessage());
         }
     }
 
     private static void exibirMenu() {
-        System.out.println("Cliente Menu"
-                + "\n " + OP_CADASTRAR_CLIENTE + " - Cadastrar Cliente"
-                + "\n " + OP_MOSTRAR_DADOS_CLIENTE + " - Mostrar Dados Cliente"
-                + "\n " + OP_ATUALIZAR_CLIENTE + " - Atualizar Cliente"
-                + "\n " + OP_DELETAR_CLIENTE + " - Deletar Cliente"
-                + "\n " + OP_PRODUTO + " - Produto"
-                + "\n " + OP_PAGAMENTO + " - Pagamento"
-                + "\n " + OP_BOLETOS + " - Boletos"
-                + "\n " + OP_VOLTA_USUARIO + " - Voltar Usuário");
+        System.out.println("\n📌 **Menu do Cliente**");
+        System.out.println("1️⃣ - Cadastrar Cliente");
+        System.out.println("2️⃣ - Mostrar Dados do Cliente");
+        System.out.println("3️⃣ - Atualizar Cliente");
+        System.out.println("4️⃣ - Deletar Cliente");
+        System.out.println("5️⃣ - Acessar Produtos");
+        System.out.println("6️⃣ - Acessar Pagamento");
+        System.out.println("7️⃣ - Gerenciar Boletos");
+        System.out.println("9️⃣ - 🔙 Voltar para o Sistema Principal");
     }
 
     private static int obterEntradaUsuario(Scanner in) {
-        int op = 0;
-        try {
-            op = Integer.parseInt(in.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida. Tente novamente.");
+        while (true) {
+            try {
+                System.out.print("🔹 Escolha uma opção: ");
+                return Integer.parseInt(in.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("❌ Entrada inválida! Digite um número.");
+            }
         }
-        return op;
     }
 }

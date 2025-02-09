@@ -1,21 +1,20 @@
 package Sistema.Model;
 
 
+import java.util.Random;
+
 public class Usuario {
 
+    private static short contadorId = 1;
     private short usuarioId;
     private String nome;
     private String email;
     private String senha;
     private String cpf_cnpj;
     private String dataNascimento;
-    private TipoUsuario tipoUsuario = TipoUsuario.CLIENTE;
 
-    public Usuario() {
-    }
-
-    public Usuario(short usuarioId, String nome, String email, String senha, String cpf_cnpj, String dataNascimento) {
-        this.usuarioId = usuarioId;
+    public Usuario(String nome, String email, String senha, String cpf_cnpj, String dataNascimento) {
+        this.usuarioId = contadorId++;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -52,7 +51,11 @@ public class Usuario {
     }
 
     public void setCpf_cnpj(String cpf_cnpj) {
-        this.cpf_cnpj = cpf_cnpj;
+        if (cpf_cnpj == null || cpf_cnpj.length() < 12) {
+            this.cpf_cnpj = GeradorCpf.gerarCpf();  // Gera um CPF válido caso o valor seja inválido
+        } else {
+            this.cpf_cnpj = cpf_cnpj;  // Atribui o valor informado se for válido
+        }
     }
 
     public String getDataNascimento() {
@@ -73,5 +76,36 @@ public class Usuario {
                 ", cpf_cnpj='" + cpf_cnpj + '\'' +
                 ", dataNascimento='" + dataNascimento + '\'' +
                 '}';
+    }
+
+        public static String gerarCpf() {
+            Random random = new Random();
+
+            int[] cpf = new int[9];
+            for (int i = 0; i < 9; i++) {
+                cpf[i] = random.nextInt(10);
+            }
+
+            // Calcula o primeiro dígito verificador
+            int digito1 = calcularDigitoVerificador(cpf, 10);
+            // Calcula o segundo dígito verificador
+            int digito2 = calcularDigitoVerificador(cpf, 11);
+
+            return String.format("%d%d%d.%d%d%d.%d%d%d-%d%d", cpf[0], cpf[1], cpf[2], cpf[3], cpf[4], cpf[5], cpf[6], cpf[7], cpf[8], digito1, digito2);
+        }
+
+        private static int calcularDigitoVerificador(int[] cpf, int peso) {
+            int soma = 0;
+            for (int i = 0; i < cpf.length; i++) {
+                soma += cpf[i] * peso--;
+                if (peso == 1) break;
+            }
+            int resto = soma % 11;
+
+            if (resto < 2) {
+                return 0;
+            } else {
+                return 11 - resto;
+            }
     }
 }

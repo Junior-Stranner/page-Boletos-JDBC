@@ -1,14 +1,20 @@
 package Sistema.Controll;
 
+import Sistema.Model.Usuario;
+
+import java.net.StandardSocketOptions;
+
 public class UsuarioController {
 
-    public static void usuarioTeste() {
+    Usuario usuario = new Usuario();
+
+    public static void usuarioTeste(Usuario usuario) {
+
+        usuario.setNome("Junior");
+        usuario.setCpf_cnpj("");
     }
 
-    public static void CadastrarUsuario() {
-        // Simulação de cadastro de usuário
-        System.out.println("Cadastro de usuário iniciado...");
-        // Lógica para cadastrar o usuário
+    public static void cadastrarUsuario() {
     }
 
     public static void mostraUsuarios() {
@@ -28,5 +34,6 @@ public class UsuarioController {
         System.out.println("Usuário deletado com sucesso.");
         // Lógica para deletar o usuário
     }
+
 
 }
