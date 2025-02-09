@@ -22,6 +22,9 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
+    public Usuario() {
+    }
+
     public String getNome() {
         return nome;
     }
@@ -52,9 +55,9 @@ public class Usuario {
 
     public void setCpf_cnpj(String cpf_cnpj) {
         if (cpf_cnpj == null || cpf_cnpj.length() < 12) {
-            this.cpf_cnpj = GeradorCpf.gerarCpf();  // Gera um CPF válido caso o valor seja inválido
+            this.cpf_cnpj = gerarCpf();
         } else {
-            this.cpf_cnpj = cpf_cnpj;  // Atribui o valor informado se for válido
+            this.cpf_cnpj = cpf_cnpj;
         }
     }
 
