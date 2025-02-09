@@ -34,43 +34,38 @@ public class Produto {
             System.out.println("0. Finalizar compra");
             int opcao = in.nextInt();
 
-            double valorProduto = 0.0;
-
             switch (opcao) {
-                case 1 -> valorProduto = calcularPreco(in, "Camiseta", 50.0);
-                case 2 -> valorProduto = calcularPreco(in, "Calça", 100.0);
-                case 3 -> valorProduto = calcularPreco(in, "Tênis", 200.0);
-                case 4 -> valorProduto = calcularPreco(in, "Boné", 30.0);
-                case 5 -> {
-                    if (totalCompra > 0) {
-                        System.out.print("Digite o valor do item a ser removido: ");
-                        double valorRemovido = in.nextDouble();
-                        if (valorRemovido <= totalCompra) {
-                            totalCompra -= valorRemovido;
-                            System.out.println("Item removido. Novo total: R$" + totalCompra);
-                        } else {
-                            System.out.println("Valor inválido. Nenhuma alteração feita.");
-                        }
-                    } else {
-                        System.out.println("Nenhum item na compra para remover.");
-                    }
-                    continue;
-                }
+                case 1 -> totalCompra += calcularPreco(in, "Camiseta", 50.0);
+                case 2 -> totalCompra += calcularPreco(in, "Calça", 100.0);
+                case 3 -> totalCompra += calcularPreco(in, "Tênis", 200.0);
+                case 4 -> totalCompra += calcularPreco(in, "Boné", 30.0);
+                case 5 -> totalCompra = cancelarUltimoItem(in, totalCompra);
                 case 0 -> {
                     System.out.println("Finalizando compra...");
                     continuar = false;
-                    continue;
                 }
-                default -> {
-                    System.out.println("Opção inválida. Tente novamente.");
-                    continue;
-                }
+                default -> System.out.println("Opção inválida. Tente novamente.");
             }
 
-            totalCompra += valorProduto;
             System.out.println("Total parcial: R$" + totalCompra);
         }
 
+        return totalCompra;
+    }
+
+    private double cancelarUltimoItem(Scanner in, double totalCompra) {
+        if (totalCompra > 0) {
+            System.out.print("Digite o valor do item a ser removido: ");
+            double valorRemovido = in.nextDouble();
+            if (valorRemovido <= totalCompra) {
+                totalCompra -= valorRemovido;
+                System.out.println("Item removido. Novo total: R$" + totalCompra);
+            } else {
+                System.out.println("Valor inválido. Nenhuma alteração feita.");
+            }
+        } else {
+            System.out.println("Nenhum item na compra para remover.");
+        }
         return totalCompra;
     }
 

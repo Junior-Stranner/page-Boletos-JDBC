@@ -2,6 +2,9 @@ package Sistema.Controll;
 
 public class UsuarioController {
 
+    public static void usuarioTeste() {
+    }
+
     public static void CadastrarUsuario() {
         // Simulação de cadastro de usuário
         System.out.println("Cadastro de usuário iniciado...");
@@ -25,4 +28,5 @@ public class UsuarioController {
         System.out.println("Usuário deletado com sucesso.");
         // Lógica para deletar o usuário
     }
+
 }
