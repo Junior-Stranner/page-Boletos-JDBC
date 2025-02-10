@@ -1,6 +1,10 @@
 package Sistema.view;
 
 import Sistema.Controll.UsuarioController;
+import Sistema.Model.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UsuarioMenu {
@@ -13,7 +17,9 @@ public class UsuarioMenu {
     private static final int OP_CLIENTE = 5;
     private static final int OP_VOLTAR = 9;
 
-    public static void usuarioMenu() {
+    public static void usuarioMenu() {sxaq
+
+            List< Usuario> usuarios = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         int op;
 
@@ -24,22 +30,22 @@ public class UsuarioMenu {
 
                 switch (op) {
                     case OP_USUARIO_TESTE:
-                        UsuarioController.usuarioTeste();
+                        UsuarioController.usuarioTeste(usuarios);
                         break;
                     case OP_CADASTRAR_USUARIO:
-                        UsuarioController.cadastrarUsuario();
+                        UsuarioController.cadastrarUsuario(usuarios);
                         break;
                     case OP_MOSTRAR_DADOS_USUARIO:
-                        UsuarioController.mostraUsuarios();
+                        UsuarioController.mostraUsuarios(usuarios);
                         break;
                     case OP_ATUALIZAR_USUARIO:
-                        UsuarioController.atualizarUsuario();
+                        UsuarioController.atualizarUsuario(usuarios);
                         break;
                     case OP_DELETAR_USUARIO:
-                        UsuarioController.deletarUsuario();
+                        UsuarioController.deletarUsuario(usuarios);
                         break;
                     case OP_CLIENTE:
-                        ClienteMenu.clienteMenu();
+                        ClienteMenu.clienteMenu(usuarios);
                         break;
                     case OP_VOLTAR:
                         System.out.println("Voltando para o Sistema Principal...");

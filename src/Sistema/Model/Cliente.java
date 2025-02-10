@@ -9,17 +9,16 @@ public class Cliente {
     private String endereco;
     private Usuario usuarioId;
 
-    public Cliente(short clienteId, String nome, String cpf_cnpj, String email, String telefone, String endereco) {
-        this.clienteId = clienteId;
+    public Cliente(short usuarioId, String nome, String cpf_cnpj, String email) {
+        this.usuarioId = usuarioId;
         this.nome = nome;
         this.cpf_cnpj = cpf_cnpj;
         this.email = email;
-        this.telefone = telefone;
-        this.endereco = endereco;
     }
-
     public Cliente() {
     }
+
+
 
     public short getClienteId() {
         return clienteId;

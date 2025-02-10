@@ -22,6 +22,10 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
+    public short getUsuarioId(){
+        return usuarioId;
+    }
+
     public Usuario() {
     }
 
@@ -111,4 +115,5 @@ public class Usuario {
                 return 11 - resto;
             }
     }
+
 }

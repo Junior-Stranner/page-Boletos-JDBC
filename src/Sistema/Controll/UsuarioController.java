@@ -3,6 +3,7 @@ package Sistema.Controll;
 import Sistema.Model.Usuario;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,16 +13,12 @@ public class UsuarioController {
     private final List<Usuario> usuarios = new ArrayList<>();
 
 
-    public static void usuarioTeste(List<Usuario> usuarios, Usuario usuario) {
-        Usuario novoUsuario = new Usuario(
-                "Junior",
-                usuario.getCpf_cnpj(),
-                "123",
-                "abelinha@gmail.com",
-                "21/10/2000"
-        );
+    public static void usuarioTeste(List<Usuario> usuarios) {
+        Usuario novoUsuario = new Usuario("Junior", "12345678900", "123", "abelinha@gmail.com", "21/10/2000");
         usuarios.add(novoUsuario);
+        System.out.println("Usuário de teste criado com sucesso!");
     }
+
 
     public static void cadastrarUsuario(List<Usuario> usuarios) {
         Scanner in = new Scanner(System.in);
@@ -55,7 +52,6 @@ public class UsuarioController {
     public static void atualizarUsuario(List<Usuario> usuarios) {
         Scanner in = new Scanner(System.in);
 
-        // Solicita o email do usuário
         System.out.println("Digite o email do Usuário");
         String email = in.nextLine();
 
@@ -77,7 +73,6 @@ public class UsuarioController {
                         usuario.setNome(novoNome);
                         System.out.println("Nome atualizado com sucesso!");
 
-                        // Alteração de senha
                     } else if (op == 2) {
                         System.out.println("Digite a nova senha:");
                         String novaSenha = in.nextLine();
@@ -99,14 +94,18 @@ public class UsuarioController {
     }
 
 
-    public static void deletarUsuario(List<Usuario> usuarios, String cpf_cnpj) {
+    public static void deletarUsuario(List<Usuario> usuarios) {
+        Scanner in = new Scanner(System.in);
+        System.out.print("Digite o CPF/CNPJ do usuário que deseja deletar: ");
+        String cpf_cnpj = in.nextLine();
+
+        Iterator<Usuario> iterator = usuarios.iterator();
         boolean usuarioDeletado = false;
 
-        for (int i = 0; i < usuarios.size(); i++) {
-            Usuario usuario = usuarios.get(i);
-
+        while (iterator.hasNext()) {
+            Usuario usuario = iterator.next();
             if (usuario.getCpf_cnpj().equals(cpf_cnpj)) {
-                usuarios.remove(i);
+                iterator.remove();
                 usuarioDeletado = true;
                 System.out.println("Usuário com CPF/CNPJ " + cpf_cnpj + " deletado com sucesso.");
                 break;
