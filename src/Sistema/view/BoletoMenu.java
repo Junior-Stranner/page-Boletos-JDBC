@@ -31,11 +31,11 @@ public class BoletoMenu {
                         break;
                     case OP_VOLTA_USUARIO:
                         System.out.println("🔙 Voltando para o Sistema Principal...");
-                        return; // Sai do menu
+                        return;
                     default:
                         System.out.println("❌ Opção inválida! Tente novamente.");
                 }
-            } while (true); // A execução continua até o usuário escolher a opção de voltar
+            } while (true);
         } catch (Exception e) {
             System.out.println("⚠ Ocorreu um erro inesperado: " + e.getMessage());
         }

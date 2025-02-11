@@ -1,6 +1,10 @@
 package Sistema.view;
 
 import Sistema.Controll.ProdutoController;
+import Sistema.Model.Cliente;
+import Sistema.Model.Usuario;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class PagamentoMenu {
@@ -11,7 +15,7 @@ public class PagamentoMenu {
     private static final int OP_VOLTA_USUARIO = 4;
     private static final int OP_VOLTAR_SISTEMA = 5;
 
-    public static void pagamentoMenu() {
+    public static void pagamentoMenu(List<Usuario> usuarios, List<Cliente> clientes) {
         Scanner in = new Scanner(System.in);
         int op;
 
@@ -47,11 +51,11 @@ public class PagamentoMenu {
 
     private static void exibirMenu() {
         System.out.println("\n💳 Menu de Pagamento"
-                + "\n " + OP_REALIZAR_COMPRA + " - Realizar Compra"
-                + "\n " + OP_BOLETOS + " - Gerenciar Boletos"
-                + "\n " + OP_VOLTA_CLIENTE + " - Voltar para o Cliente"
-                + "\n " + OP_VOLTA_USUARIO + " - Voltar para o Usuário"
-                + "\n " + OP_VOLTAR_SISTEMA + " - Retornar ao Sistema Principal");
+                + "\n " + OP_REALIZAR_COMPRA + " - 1. Realizar Compra"
+                + "\n " + OP_BOLETOS + " - 2. Gerenciar Boletos"
+                + "\n " + OP_VOLTA_CLIENTE + " - 3. Voltar para o Cliente"
+                + "\n " + OP_VOLTA_USUARIO + " - 4. Voltar para o Usuário"
+                + "\n " + OP_VOLTAR_SISTEMA + " - 5. Retornar ao Sistema Principal");
     }
 
     private static int obterEntradaUsuario(Scanner in) {

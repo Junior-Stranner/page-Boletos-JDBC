@@ -32,22 +32,22 @@ public class SistemaPrincipalMenu {
 
                 switch (op) {
                     case OP_USUARIO:
-                        // Lógica para Usuário
+                        UsuarioMenu.usuarioMenu();
                         break;
                     case OP_CLIENTE:
-                        // Lógica para Clientes
+                        ClienteMenu.clienteMenu(usuarios, clientes);
                         break;
                     case OP_PRODUTO:
-                        // Lógica para Produtos
+                        ProdutoMenu.produtoMenu(usuarios,clientes);
                         break;
                     case OP_PAGAMENTO:
-                        // Lógica para Pagamento
+                        PagamentoMenu.pagamentoMenu(usuarios, clientes);
                         break;
                     case OP_BOLETO:
-                        // Lógica para Boleto
+                        BoletoMenu.boletoMenu();
                         break;
                     case OP_VOLTAR:
-                        System.out.println("Voltando para o Sistema Principal...");
+                        System.out.println("Fechar Sistema...");
                         break;
                     default:
                         System.out.println("Opção inválida, tente novamente.");
@@ -60,12 +60,12 @@ public class SistemaPrincipalMenu {
 
     private static void exibirMenu() {
         System.out.println("\n📌 Menu de Sistema"
-                + "\n " + OP_USUARIO + " - Gerenciar Usuário"
-                + "\n " + OP_CLIENTE + " - Gerenciar Clientes"
-                + "\n " + OP_PRODUTO + " - Gerenciar Produtos"
-                + "\n " + OP_PAGAMENTO + " - Gerenciar Pagamentos"
-                + "\n " + OP_BOLETO + " - Gerenciar Boletos"
-                + "\n " + OP_VOLTAR + " - Voltar ao Sistema Principal");
+                + "\n " + OP_USUARIO + " - 1. Gerenciar Usuário"
+                + "\n " + OP_CLIENTE + " - 2. Gerenciar Clientes"
+                + "\n " + OP_PRODUTO + " - 3. Gerenciar Produtos"
+                + "\n " + OP_PAGAMENTO + " - 4. Gerenciar Pagamentos"
+                + "\n " + OP_BOLETO + " - 5. Gerenciar Boletos"
+                + "\n " + OP_VOLTAR + " - 9. Voltar ao Sistema Principal");
     }
 
     private static int obterEntradaSistema(Scanner in) {

@@ -42,10 +42,10 @@ public class ClienteMenu {
                         ClienteController.deletarCliente(clientes);
                         break;
                     case OP_PRODUTO:
-                        ProdutoMenu.produtoMenu();
+                        ProdutoMenu.produtoMenu(usuarios,clientes);
                         break;
                     case OP_PAGAMENTO:
-                        PagamentoMenu.pagamentoMenu();
+                        PagamentoMenu.pagamentoMenu(usuarios,clientes);
                         break;
                     case OP_BOLETOS:
                         BoletoMenu.boletoMenu();

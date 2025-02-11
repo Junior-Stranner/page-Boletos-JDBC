@@ -1,6 +1,10 @@
 package Sistema.view;
 
 import Sistema.Controll.ProdutoController;
+import Sistema.Model.Cliente;
+import Sistema.Model.Usuario;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class ProdutoMenu {
@@ -12,7 +16,7 @@ public class ProdutoMenu {
     private static final int OP_VOLTA_USUARIO = 5;
     private static final int OP_VOLTAR_SISTEMA = 6;
 
-    public static void produtoMenu() {
+    public static void produtoMenu(List<Usuario> usuarios, List<Cliente> clientes) {
         Scanner in = new Scanner(System.in);
         int op;
 
@@ -26,7 +30,7 @@ public class ProdutoMenu {
                         ProdutoController.realizarCompra();
                         break;
                     case OP_PAGAMENTO:
-                        PagamentoMenu.pagamentoMenu();
+                        PagamentoMenu.pagamentoMenu(usuarios,clientes);
                         break;
                     case OP_BOLETOS:
                         BoletoMenu.boletoMenu();
@@ -51,12 +55,12 @@ public class ProdutoMenu {
 
     private static void exibirMenu() {
         System.out.println("\n🛒 Menu de Produtos"
-                + "\n " + OP_REALIZAR_COMPRA + " - Realizar Compra"
-                + "\n " + OP_PAGAMENTO + " - Efetuar Pagamento"
-                + "\n " + OP_BOLETOS + " - Gerenciar Boletos"
-                + "\n " + OP_VOLTA_CLIENTE + " - Voltar para o Cliente"
-                + "\n " + OP_VOLTA_USUARIO + " - Voltar para o Usuário"
-                + "\n " + OP_VOLTAR_SISTEMA + " - Retornar ao Sistema Principal");
+                + "\n " + OP_REALIZAR_COMPRA + " - 1. Realizar Compra"
+                + "\n " + OP_PAGAMENTO + " - 2. Efetuar Pagamento"
+                + "\n " + OP_BOLETOS + " - 3. Gerenciar Boletos"
+                + "\n " + OP_VOLTA_CLIENTE + " - 4. Voltar para o Cliente"
+                + "\n " + OP_VOLTA_USUARIO + " - 5. Voltar para o Usuário"
+                + "\n " + OP_VOLTAR_SISTEMA + " - 6. Retornar ao Sistema Principal");
     }
 
     private static int obterEntradaUsuario(Scanner in) {

@@ -7,7 +7,7 @@ public class Cliente {
     private String email;
     private String telefone;
     private String endereco;
-    private Usuario usuarioId;
+    private short usuarioId;
 
     public Cliente(short usuarioId, String nome, String cpf_cnpj, String email) {
         this.usuarioId = usuarioId;
