@@ -32,7 +32,7 @@ public class ProdutoMenu {
                         BoletoMenu.boletoMenu();
                         break;
                     case OP_VOLTA_CLIENTE:
-                        ClienteMenu.clienteMenu();
+                        ClienteMenu.clienteMenu(usuarios, clientes);
                         break;
                     case OP_VOLTA_USUARIO:
                         UsuarioMenu.usuarioMenu();

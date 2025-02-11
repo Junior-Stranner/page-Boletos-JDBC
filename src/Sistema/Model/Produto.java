@@ -93,11 +93,11 @@ public class Produto {
     public String toString() {
         return "Produto{" +
                 "produtoId=" + produtoId +
-                ", nomeProduto='" + nomeProduto + '\'' +
+                ", nomeProduto='" + nomeProduto + '\'' + 
                 ", numProduto='" + numProduto + '\'' +
                 ", valorProduto=" + valorProduto +
                 ", quantidade_estoque=" + quantidade_estoque +
                 '}';
-    }
+    } 
 }
 

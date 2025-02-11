@@ -1,6 +1,7 @@
 package Sistema.view;
 
 import Sistema.Controll.UsuarioController;
+import Sistema.Model.Cliente;
 import Sistema.Model.Usuario;
 
 import java.util.ArrayList;
@@ -17,9 +18,11 @@ public class UsuarioMenu {
     private static final int OP_CLIENTE = 5;
     private static final int OP_VOLTAR = 9;
 
-    public static void usuarioMenu() {sxaq
+    public static void usuarioMenu() {
 
-            List< Usuario> usuarios = new ArrayList<>();
+        List< Usuario> usuarios = new ArrayList<>();
+        List<Cliente> clientes = new ArrayList<>();
+
         Scanner in = new Scanner(System.in);
         int op;
 
@@ -45,7 +48,7 @@ public class UsuarioMenu {
                         UsuarioController.deletarUsuario(usuarios);
                         break;
                     case OP_CLIENTE:
-                        ClienteMenu.clienteMenu(usuarios);
+                        ClienteMenu.clienteMenu(usuarios, clientes);
                         break;
                     case OP_VOLTAR:
                         System.out.println("Voltando para o Sistema Principal...");

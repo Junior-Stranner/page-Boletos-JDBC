@@ -10,7 +10,7 @@ public class Pagamento {
     private double valorPago;
     private LocalDateTime dataPagamento;
     private MetodoPagamento metodoPagamento;
-    private Boleto boleto; // Referência direta ao objeto Boleto
+    private Boleto boleto;
     private short clienteId;
     private Status status;
 

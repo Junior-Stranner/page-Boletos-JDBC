@@ -20,7 +20,7 @@ public class SistemaPrincipal {
                 switch(op){
 
                     case 1:UsuarioMenu.usuarioMenu();break;
-                    case 2:ClienteMenu.clienteMenu();break;
+                    case 2:ClienteMenu.clienteMenu(usuarios, clientes);break;
                     case 3:;break;
                     case 4:;break;
                     default:System.out.println("Voltando para o Sistema Principal");
