@@ -12,14 +12,6 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(short produtoId, String nomeProduto, String numProduto, double valorProduto, short quantidade_estoque) {
-        this.produtoId = produtoId;
-        this.nomeProduto = nomeProduto;
-        this.numProduto = numProduto;
-        this.valorProduto = valorProduto;
-        this.quantidade_estoque = quantidade_estoque;
-    }
-
     public double escolhaProdutos(Scanner in) {
         double totalCompra = 0.0;
         boolean continuar = true;
@@ -39,6 +31,7 @@ public class Produto {
                 case 2 -> totalCompra += calcularPreco(in, "Calça", 100.0);
                 case 3 -> totalCompra += calcularPreco(in, "Tênis", 200.0);
                 case 4 -> totalCompra += calcularPreco(in, "Boné", 30.0);
+
                 case 5 -> totalCompra = cancelarUltimoItem(in, totalCompra);
                 case 0 -> {
                     System.out.println("Finalizando compra...");
@@ -53,7 +46,8 @@ public class Produto {
         return totalCompra;
     }
 
-    private double cancelarUltimoItem(Scanner in, double totalCompra) {
+    // Método para cancelar o último item adicionado
+    public double cancelarUltimoItem(Scanner in, double totalCompra) {
         if (totalCompra > 0) {
             System.out.print("Digite o valor do item a ser removido: ");
             double valorRemovido = in.nextDouble();
@@ -69,7 +63,8 @@ public class Produto {
         return totalCompra;
     }
 
-    private double calcularPreco(Scanner in, String produto, double precoUnitario) {
+    // Método para calcular o preço do produto selecionado
+    public double calcularPreco(Scanner in, String produto, double precoUnitario) {
         System.out.print("Quantas unidades de " + produto + " deseja comprar? ");
         int quantidade = in.nextInt();
 
@@ -89,6 +84,7 @@ public class Produto {
         return total;
     }
 
+
     @Override
     public String toString() {
         return "Produto{" +
@@ -98,6 +94,14 @@ public class Produto {
                 ", valorProduto=" + valorProduto +
                 ", quantidade_estoque=" + quantidade_estoque +
                 '}';
-    } 
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
 }
 

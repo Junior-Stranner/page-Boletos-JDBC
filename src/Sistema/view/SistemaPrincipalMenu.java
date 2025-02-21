@@ -1,6 +1,5 @@
 package Sistema.view;
 
-import Sistema.Controll.UsuarioController;
 import Sistema.Model.Cliente;
 import Sistema.Model.Usuario;
 

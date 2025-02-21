@@ -6,12 +6,14 @@ import java.util.Scanner;
 
 public class ProdutoController {
 
-    public static void realizarCompra() {
+    // Método para realizar a compra
+    public static Produto realizarCompra(Produto produto) {
         Scanner in = new Scanner(System.in);
-        Produto produto = new Produto();
 
         double totalCompra = produto.escolhaProdutos(in);
-
         System.out.println("Compra finalizada. Total a pagar: R$" + totalCompra);
+
+        return produto;
     }
+
 }

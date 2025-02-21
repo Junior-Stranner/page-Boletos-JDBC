@@ -2,6 +2,7 @@ package Sistema.Controll;
 
 public class BoletoController {
     public static void gerarBoleto() {
+
     }
 
     public static void mostrarBoletos() {
