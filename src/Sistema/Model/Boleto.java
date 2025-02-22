@@ -32,8 +32,6 @@ public class Boleto {
         this.boletoId = boletoId;
     }
 
-
-
     public float getValor() {
         return valor;
     }
