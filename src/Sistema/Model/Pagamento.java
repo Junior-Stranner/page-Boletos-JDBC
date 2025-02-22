@@ -11,27 +11,21 @@ public class Pagamento {
     private LocalDateTime dataPagamento;
     private MetodoPagamento metodoPagamento;
     private Boleto boleto;
+    private Produto produto;
     private short clienteId;
     private Status status;
 
     public Pagamento() {
     }
 
-    public Pagamento(short pagId, double valorPago, LocalDateTime dataPagamento, MetodoPagamento metodoPagamento, Boleto boleto, Status status) {
-        this.pagId = pagId;
+    public Pagamento(double valorPago, LocalDateTime dataPagamento, MetodoPagamento metodoPagamento, Boleto boleto, Produto produto, short clienteId, Status status) {
         this.valorPago = valorPago;
         this.dataPagamento = dataPagamento;
         this.metodoPagamento = metodoPagamento;
         this.boleto = boleto;
+        this.produto = produto;
+        this.clienteId = clienteId;
         this.status = status;
-    }
-
-    public short getPagId() {
-        return pagId;
-    }
-
-    public void setPagId(short pagId) {
-        this.pagId = pagId;
     }
 
     public double getValorPago() {
@@ -64,6 +58,22 @@ public class Pagamento {
 
     public void setBoleto(Boleto boleto) {
         this.boleto = boleto;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public short getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(short clienteId) {
+        this.clienteId = clienteId;
     }
 
     public Status getStatus() {

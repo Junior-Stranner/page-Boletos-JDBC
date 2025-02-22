@@ -14,7 +14,7 @@ public class UsuarioController {
 
 
     public static void usuarioTeste(List<Usuario> usuarios) {
-        Usuario novoUsuario = new Usuario("Junior", "12345678900", "123", "abelinha@gmail.com", "21/10/2000");
+        Usuario novoUsuario = new Usuario("Junior", "jujuba@outlook.com", "123", Usuario.gerarCpf(), "21/10/2000");
         usuarios.add(novoUsuario);
         System.out.println("Usuário de teste criado com sucesso!");
     }
@@ -26,8 +26,8 @@ public class UsuarioController {
         System.out.print("Digite o nome: ");
         String nome = in.nextLine();
 
-        System.out.print("Digite o CPF/CNPJ: ");
-        String cpf_cnpj = in.nextLine();
+        System.out.print("Seu o CPF/CNPJ: "+Usuario.gerarCpf()+"\n");
+        String cpf_cnpj = Usuario.gerarCpf();
 
         System.out.print("Digite a senha: ");
         String senha = in.nextLine();

@@ -64,12 +64,12 @@ public class UsuarioMenu {
 
     private static void exibirMenu() {
         System.out.println("\n📌 Menu de Usuário"
-                + "\n " + OP_USUARIO_TESTE + " - 1. Criar Usuário de Teste"
-                + "\n " + OP_CADASTRAR_USUARIO + " - 2. Cadastrar Usuário"
-                + "\n " + OP_MOSTRAR_DADOS_USUARIO + " - 3. Mostrar Dados do Usuário"
-                + "\n " + OP_ATUALIZAR_USUARIO + " - 4. Atualizar Usuário"
-                + "\n " + OP_DELETAR_USUARIO + " - 5. Deletar Usuário"
-                + "\n " + OP_CLIENTE + " - 6. Gerenciar Clientes"
+                + "\n " + OP_USUARIO_TESTE + " - 0. Criar Usuário de Teste"
+                + "\n " + OP_CADASTRAR_USUARIO + " - 1. Cadastrar Usuário"
+                + "\n " + OP_MOSTRAR_DADOS_USUARIO + " - 2. Mostrar Dados do Usuário"
+                + "\n " + OP_ATUALIZAR_USUARIO + " - 3. Atualizar Usuário"
+                + "\n " + OP_DELETAR_USUARIO + " - 4. Deletar Usuário"
+                + "\n " + OP_CLIENTE + " - 5. Gerenciar Clientes"
                 + "\n " + OP_VOLTAR + " - 9. Voltar ao Sistema Principal");
     }
 
