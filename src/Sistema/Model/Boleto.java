@@ -1,46 +1,47 @@
 package Sistema.Model;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Boleto {
-    private int boletoId;
+    private static int boletoId;
 //    private String codigo_barras;
-    private float valor;
-    private LocalDateTime data_vencimento;
-    private LocalDateTime data_pagamento;
-    private Cliente clienteId;
-    private List<Pagamento> pagamentos;  // Lista de pagamentos relacionados a este boleto
+    private static float valorCompra;
+    private static LocalDateTime data_vencimento;
+    private static LocalDate dataCompra = LocalDate.now();
+    private static short numParcelas;
+    private static Cliente clienteId;
+    private static List<Pagamento> pagamentos;  // Lista de pagamentos relacionados a este boleto
 
     public Boleto() {
     }
 
-    public Boleto(int boletoId, float valor, LocalDateTime data_vencimento, LocalDateTime data_pagamento,List<Pagamento> pagamentos) {
-        this.boletoId = boletoId;
-        this.valor = valor;
+    public Boleto(float valorCompra, LocalDateTime data_vencimento, LocalDate dataCompra, short numParcelas, Cliente clienteId, List<Pagamento> pagamentos) {
+        this.valorCompra = valorCompra;
         this.data_vencimento = data_vencimento;
-        this.data_pagamento = data_pagamento;
+        this.dataCompra = dataCompra;
+        this.numParcelas = numParcelas;
+        this.clienteId = clienteId;
         this.pagamentos = pagamentos;
-    }
-
-    public int getBoletoId() {
-        return boletoId;
     }
 
     public void setBoletoId(int boletoId) {
         this.boletoId = boletoId;
     }
 
-    public float getValor() {
-        return valor;
+    public static float getValorCompra() {
+        return valorCompra;
     }
 
-    public void setValor(float valor) {
-        this.valor = valor;
+    public void setValorCompra(float valorCompra) {
+        this.valorCompra = valorCompra;
     }
 
-    public LocalDateTime getData_vencimento() {
+    public static LocalDateTime getData_vencimento() {
         return data_vencimento;
     }
 
@@ -48,12 +49,12 @@ public class Boleto {
         this.data_vencimento = data_vencimento;
     }
 
-    public LocalDateTime getData_pagamento() {
-        return data_pagamento;
+    public ChronoLocalDateTime<?> getDataCompra() {
+        return dataCompra.atStartOfDay();
     }
 
-    public void setData_pagamento(LocalDateTime data_pagamento) {
-        this.data_pagamento = data_pagamento;
+    public void setDataCompra(LocalDate dataCompra) {
+        this.dataCompra = dataCompra;
     }
 
     public Cliente getClienteId() {
@@ -72,20 +73,43 @@ public class Boleto {
         this.pagamentos = pagamentos;
     }
 
+    public static short getNumParcelas() {
+        return numParcelas;
+    }
+
+    public void setNumParcelas(short numParcelas) {
+        this.numParcelas = numParcelas;
+    }
+
+  /*  public void calcularParcelas() {
+        System.out.println("Data da Compra: " + dataCompra.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        System.out.println("Data de Vencimento Inicial: " + data_vencimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+
+        double valorComJuros = getValorCompra() * 1.03;
+        double valorParcelaComJuros = valorComJuros / getNumParcelas();
+
+        // Variável local para não alterar o valor original de data_vencimento
+        LocalDate vencimentoParcela = LocalDate.from(data_vencimento);
+
+        for (int parcela = 1; parcela <= getNumParcelas(); parcela++) {
+            vencimentoParcela = vencimentoParcela.plusMonths(1);
+
+            System.out.println("Parcela " + parcela + " de " + getNumParcelas() +
+                    " | Vencimento: " + vencimentoParcela.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+                    " | Valor da Parcela: R$ " + String.format("%.2f", valorParcelaComJuros));
+        }
+    }*/
+
     @Override
     public String toString() {
         return "Boleto{" +
                 "boletoId=" + boletoId +
-                ", valor=" + valor +
+                ", valorCompra=" + valorCompra +
                 ", data_vencimento=" + data_vencimento +
-                ", data_pagamento=" + data_pagamento +
+                ", data_Compra=" + dataCompra +
+                ", numParcelas=" + numParcelas +
                 ", clienteId=" + clienteId +
                 ", pagamentos=" + pagamentos +
                 '}';
-    }
-
-    public static void calcularParcelas(){
-
-
     }
 }

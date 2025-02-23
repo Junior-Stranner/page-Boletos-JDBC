@@ -1,5 +1,7 @@
 package Sistema.Model;
 
+import java.time.LocalDate;
+
 public class Cliente {
     private short clienteId;
     private String nome;

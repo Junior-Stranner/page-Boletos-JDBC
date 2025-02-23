@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class Pagamento {
     private short pagId;
     private double valorPago;
-    private LocalDateTime dataPagamento;
     private MetodoPagamento metodoPagamento;
     private Boleto boleto;
     private Produto produto;
@@ -18,9 +17,8 @@ public class Pagamento {
     public Pagamento() {
     }
 
-    public Pagamento(double valorPago, LocalDateTime dataPagamento, MetodoPagamento metodoPagamento, Boleto boleto, Produto produto, short clienteId, Status status) {
+    public Pagamento(double valorPago , MetodoPagamento metodoPagamento, Boleto boleto, Produto produto, short clienteId, Status status) {
         this.valorPago = valorPago;
-        this.dataPagamento = dataPagamento;
         this.metodoPagamento = metodoPagamento;
         this.boleto = boleto;
         this.produto = produto;
@@ -36,13 +34,7 @@ public class Pagamento {
         this.valorPago = valorPago;
     }
 
-    public LocalDateTime getDataPagamento() {
-        return dataPagamento;
-    }
 
-    public void setDataPagamento(LocalDateTime dataPagamento) {
-        this.dataPagamento = dataPagamento;
-    }
 
     public MetodoPagamento getMetodoPagamento() {
         return metodoPagamento;
@@ -89,7 +81,6 @@ public class Pagamento {
         return "Pagamento{" +
                 "pagId=" + pagId +
                 ", valorPago=" + valorPago +
-                ", dataPagamento=" + dataPagamento +
                 ", metodoPagamento=" + metodoPagamento +
                 ", boleto=" + boleto + // Exibindo objeto boleto
                 ", clienteId=" + clienteId +
