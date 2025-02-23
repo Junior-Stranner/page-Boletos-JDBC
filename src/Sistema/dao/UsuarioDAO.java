@@ -69,4 +69,63 @@ public class UsuarioDAO {
         return usuarios;
     }
 
+    public void alterarUsuario(Usuario usuario) throws SQLException {
+        String sql = "UPDATE usuarios SET nome = ? WHERE senha = ?";  // Corrigi o nome da tabela e a query SQL
+
+        Connection con = null;
+        PreparedStatement codigo = null;
+
+        try {
+            con = Conexao.conectarBD();
+            codigo = con.prepareStatement(sql);
+
+            codigo.setString(1, usuario.getNome());
+            codigo.setString(2, usuario.getSenha());
+
+            int rowsUpdated = codigo.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                System.out.println("Usuário alterado com sucesso!");
+            } else {
+                System.out.println("Nenhum usuário encontrado com essa senha.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar usuário: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (codigo != null) {
+                codigo.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    public void deletarUsuarioBD(Usuario usuario) throws SQLException {
+        String sql = "DELETE FROM usuarios WHERE cpf_cnpj = ?";
+
+        Connection con = null;
+        PreparedStatement codigo = null;
+
+        try {
+            con = Conexao.conectarBD();
+            codigo = con.prepareStatement(sql);
+            codigo.setString(1, usuario.getNome());
+            codigo.execute();
+
+            System.out.println("Usuário deletado com sucesso!");
+        } catch (SQLException e) {
+            System.out.println("Erro ao deletar usuário: " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            if (codigo != null) {
+                codigo.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
 }
