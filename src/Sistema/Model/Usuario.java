@@ -73,6 +73,10 @@ public class Usuario {
         this.dataNascimento = dataNascimento;
     }
 
+    public void setUsuarioId(short usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
