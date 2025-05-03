@@ -4,7 +4,6 @@ package Sistema.Model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Boleto {

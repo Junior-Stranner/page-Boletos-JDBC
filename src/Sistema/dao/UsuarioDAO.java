@@ -1,17 +1,12 @@
 package Sistema.dao;
 
 import Sistema.Model.Usuario;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class UsuarioDAO {
 
     public void salvarUsuario(Usuario usuario) throws SQLException {
-
         String sql = "INSERT INTO usuarios (nome, email, senha, cpf_cnpj, dataNascimento) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = Conexao.conectarBD();
@@ -33,17 +28,12 @@ public class UsuarioDAO {
     }
 
     public ArrayList<Usuario> lerDadosBD() throws SQLException {
-        String sql = "SELECT * from usuarios";
-
+        String sql = "SELECT * FROM usuarios";
         ArrayList<Usuario> usuarios = new ArrayList<>();
-        Connection con = null;
-        PreparedStatement codigo = null;
-        ResultSet dadosBD = null;
 
-        try {
-            con = Conexao.conectarBD();
-            codigo = con.prepareStatement(sql);
-            dadosBD = codigo.executeQuery();
+        try (Connection con = Conexao.conectarBD();
+             PreparedStatement stmt = con.prepareStatement(sql);
+             ResultSet dadosBD = stmt.executeQuery()) {
 
             while (dadosBD.next()) {
                 Usuario usuario = new Usuario();
@@ -56,76 +46,56 @@ public class UsuarioDAO {
 
                 usuarios.add(usuario);
             }
+
         } catch (SQLException e) {
             System.out.println("Erro ao ler dados dos usuários: " + e.getMessage());
-        } finally {
-            if (codigo != null) {
-                codigo.close();
-            }
-            if (con != null) {
-                con.close();
-            }
+            throw e;
         }
+
         return usuarios;
     }
 
     public void alterarUsuario(Usuario usuario) throws SQLException {
-        String sql = "UPDATE usuarios SET nome = ? WHERE senha = ?";  // Corrigi o nome da tabela e a query SQL
+        String sql = "UPDATE usuarios SET nome = ? WHERE idusuario = ?";
 
-        Connection con = null;
-        PreparedStatement codigo = null;
+        try (Connection con = Conexao.conectarBD();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
 
-        try {
-            con = Conexao.conectarBD();
-            codigo = con.prepareStatement(sql);
+            stmt.setString(1, usuario.getNome());
+            stmt.setInt(2, usuario.getUsuarioId());
 
-            codigo.setString(1, usuario.getNome());
-            codigo.setString(2, usuario.getSenha());
-
-            int rowsUpdated = codigo.executeUpdate();
+            int rowsUpdated = stmt.executeUpdate();
 
             if (rowsUpdated > 0) {
                 System.out.println("Usuário alterado com sucesso!");
             } else {
-                System.out.println("Nenhum usuário encontrado com essa senha.");
+                System.out.println("Nenhum usuário encontrado com esse ID.");
             }
 
         } catch (SQLException e) {
             System.out.println("Erro ao atualizar usuário: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            if (codigo != null) {
-                codigo.close();
-            }
-            if (con != null) {
-                con.close();
-            }
+            throw e;
         }
     }
 
     public void deletarUsuarioBD(Usuario usuario) throws SQLException {
         String sql = "DELETE FROM usuarios WHERE cpf_cnpj = ?";
 
-        Connection con = null;
-        PreparedStatement codigo = null;
+        try (Connection con = Conexao.conectarBD();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
 
-        try {
-            con = Conexao.conectarBD();
-            codigo = con.prepareStatement(sql);
-            codigo.setString(1, usuario.getNome());
-            codigo.execute();
+            stmt.setString(1, usuario.getCpf_cnpj());
+            int rowsDeleted = stmt.executeUpdate();
 
-            System.out.println("Usuário deletado com sucesso!");
+            if (rowsDeleted > 0) {
+                System.out.println("Usuário deletado com sucesso!");
+            } else {
+                System.out.println("Nenhum usuário encontrado com esse CPF/CNPJ.");
+            }
+
         } catch (SQLException e) {
             System.out.println("Erro ao deletar usuário: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            if (codigo != null) {
-                codigo.close();
-            }
-            if (con != null) {
-                con.close();
-            }
+            throw e;
         }
     }
 }

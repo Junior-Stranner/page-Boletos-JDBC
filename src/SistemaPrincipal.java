@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.System.in;
-
 public class SistemaPrincipal {
     private static final int OP_USUARIO = 1;
     private static final int OP_CLIENTE = 2;

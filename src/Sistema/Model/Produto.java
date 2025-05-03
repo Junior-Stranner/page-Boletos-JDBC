@@ -18,8 +18,12 @@ public class Produto {
         this.quantidade_estoque = quantidade_estoque;
     }
 
-    public Produto(String compraFinalizada, double totalCompra) {
+    public Produto(String nomeProduto, double valorProduto) {
+        this.nomeProduto = nomeProduto;
+        this.valorProduto = valorProduto;
     }
+    
+
 
     public static double calcularPreco(Scanner in, Produto produto) {
         System.out.print("Quantas unidades de " + produto.getNomeProduto() + " deseja comprar? ");
@@ -66,16 +70,17 @@ public class Produto {
             System.out.println("0. Finalizar compra");
             int opcao = in.nextInt();
 
-            if (opcao >= 1 && opcao <= produtosDisponiveis.size()) {
-                Produto produtoEscolhido = produtosDisponiveis.get(opcao - 1);
-                totalCompra += calcularPreco(in, produtoEscolhido);
-            } else if (opcao == 5) {
-                totalCompra = cancelarUltimoItem(in, totalCompra);
-            } else if (opcao == 0) {
-                System.out.println("Finalizando compra...");
-                continuar = false;
-            } else {
-                System.out.println("Opção inválida. Tente novamente.");
+            switch (opcao) {
+                case 1, 2, 3, 4 -> {
+                    Produto selecionado = produtosDisponiveis.get(opcao - 1);
+                    totalCompra += calcularPreco(in, selecionado);
+                }
+                case 5 -> totalCompra = cancelarUltimoItem(in, totalCompra);
+                case 0 -> {
+                    System.out.println("Compra finalizada.");
+                    continuar = false;
+                }
+                default -> System.out.println("Opção inválida. Tente novamente.");
             }
 
             System.out.println("Total parcial: R$" + totalCompra);

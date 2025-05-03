@@ -1,9 +1,5 @@
 package Sistema.Model;
 
-import Sistema.Model.Boleto;
-import Sistema.Model.MetodoPagamento;
-
-import java.time.LocalDateTime;
 
 public class Pagamento {
     private short pagId;

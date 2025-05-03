@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class BoletoMenu {
 
     private static final int OP_GERAR_BOLETO = 1;
-    private static final int OP_MOSTRAR_BOLETOS = 2;
+    private static final int OP_METODO_PAGAMENTO = 2;
     private static final int OP_PAGAR_BOLETO = 3;
     private static final int OP_VOLTA_USUARIO = 4;
 
@@ -23,8 +23,8 @@ public class BoletoMenu {
                     case OP_GERAR_BOLETO:
                         BoletoController.gerarBoleto();
                         break;
-                    case OP_MOSTRAR_BOLETOS:
-                        BoletoController.mostrarBoletos();
+                    case OP_METODO_PAGAMENTO:
+                        BoletoController.metodoPagamento();
                         break;
                     case OP_PAGAR_BOLETO:
                         BoletoController.pagarBoleto();
