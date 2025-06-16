@@ -3,6 +3,7 @@ package Sistema.view;
 import Sistema.Controll.UsuarioController;
 import Sistema.Model.Cliente;
 import Sistema.Model.Usuario;
+import Sistema.dao.UsuarioDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,49 +19,49 @@ public class UsuarioMenu {
     private static final int OP_CLIENTE = 5;
     private static final int OP_VOLTAR = 9;
 
-    public static void usuarioMenu() {
+  public static void usuarioMenu() {
 
-        List< Usuario> usuarios = new ArrayList<>();
-        List<Cliente> clientes = new ArrayList<>();
+    List<Cliente> clientes = new ArrayList<>();
+    UsuarioDAO usuarioDAO = new UsuarioDAO(); // DAO do banco
+    Scanner in = new Scanner(System.in);
+    int op;
 
-        Scanner in = new Scanner(System.in);
-        int op;
+    try {
+        do {
+            exibirMenu();
+            op = obterEntradaUsuario(in);
 
-        try {
-            do {
-                exibirMenu();
-                op = obterEntradaUsuario(in);
-
-                switch (op) {
-                    case OP_USUARIO_TESTE:
-                        UsuarioController.usuarioTeste(usuarios);
-                        break;
-                    case OP_CADASTRAR_USUARIO:
-                        UsuarioController.cadastrarUsuario(usuarios);
-                        break;
-                    case OP_MOSTRAR_DADOS_USUARIO:
-                        UsuarioController.mostraUsuarios(usuarios);
-                        break;
-                    case OP_ATUALIZAR_USUARIO:
-                        UsuarioController.atualizarUsuario(usuarios);
-                        break;
-                    case OP_DELETAR_USUARIO:
-                        UsuarioController.deletarUsuario(usuarios);
-                        break;
-                    case OP_CLIENTE:
-                        ClienteMenu.clienteMenu(usuarios, clientes);
-                        break;
-                    case OP_VOLTAR:
-                        System.out.println("Voltando para o Sistema Principal...");
-                        break;
-                    default:
-                        System.out.println("Opção inválida, tente novamente.");
-                }
-            } while (op != OP_VOLTAR);
-        } catch (Exception e) {
-            System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
-        }
+            switch (op) {
+                case OP_USUARIO_TESTE:
+                    UsuarioController.usuarioTeste(usuarioDAO); 
+                    break;
+                case OP_CADASTRAR_USUARIO:
+                    UsuarioController.cadastrarUsuario(usuarioDAO);
+                    break;
+                case OP_MOSTRAR_DADOS_USUARIO:
+                    UsuarioController.mostraUsuarios(usuarioDAO);
+                    break;
+                case OP_ATUALIZAR_USUARIO:
+                    UsuarioController.atualizarUsuario(usuarioDAO);
+                    break;
+                case OP_DELETAR_USUARIO:
+                    UsuarioController.deletarUsuario(usuarioDAO);
+                    break;
+                case OP_CLIENTE:
+                    ClienteMenu.clienteMenu(new ArrayList<>(), clientes);
+                    break;
+                case OP_VOLTAR:
+                    System.out.println("Voltando para o Sistema Principal...");
+                    break;
+                default:
+                    System.out.println("Opção inválida, tente novamente.");
+            }
+        } while (op != OP_VOLTAR);
+    } catch (Exception e) {
+        System.out.println("Ocorreu um erro inesperado: " + e.getMessage());
     }
+}
+
 
     private static void exibirMenu() {
         System.out.println("\n📌 Menu de Usuário"

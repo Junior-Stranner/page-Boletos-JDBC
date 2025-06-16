@@ -18,14 +18,14 @@ public class UsuarioController {
     }
 
 
-    public static void cadastrarUsuario(List<Usuario> usuarios) {
+    public static void cadastrarUsuario(UsuarioDAO usuarioDAO) {
         Scanner in = new Scanner(System.in);
 
         System.out.print("Digite o nome: ");
         String nome = in.nextLine();
 
-        System.out.print("Seu o CPF/CNPJ: "+Usuario.gerarCpf()+"\n");
         String cpf_cnpj = Usuario.gerarCpf();
+        System.out.print("Seu CPF/CNPJ: " + cpf_cnpj + "\n");
 
         System.out.print("Digite a senha: ");
         String senha = in.nextLine();
@@ -37,9 +37,6 @@ public class UsuarioController {
         String dataNascimento = in.nextLine();
 
         Usuario novoUsuario = new Usuario(nome, cpf_cnpj, senha, email, dataNascimento);
-        usuarios.add(novoUsuario);
-        System.out.println("Usuário cadastrado com sucesso!");
-         UsuarioDAO usuarioDAO = new UsuarioDAO();
 
         try {
            usuarioDAO.salvarUsuario(novoUsuario);
@@ -48,8 +45,7 @@ public class UsuarioController {
          }
     }
 
-   public static void mostraUsuarios() {
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
+   public static void mostraUsuarios(UsuarioDAO usuarioDAO) {
 
     try {
         ArrayList<Usuario> usuarios = usuarioDAO.lerDadosBD();
@@ -68,9 +64,8 @@ public class UsuarioController {
 }
 
 
-    public static void atualizarUsuario() {
+    public static void atualizarUsuario(UsuarioDAO usuarioDAO) {
     Scanner in = new Scanner(System.in);
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
     System.out.print("Digite o ID do usuário que deseja alterar: ");
     int id = Integer.parseInt(in.nextLine());
@@ -119,21 +114,20 @@ public class UsuarioController {
 }
 
 
-  public static void deletarUsuario() {
-    Scanner in = new Scanner(System.in);
-    System.out.print("Digite o CPF/CNPJ do usuário que deseja deletar: ");
-    String cpf_cnpj = in.nextLine();
+     public static void deletarUsuario(UsuarioDAO usuarioDAO) {
+       Scanner in = new Scanner(System.in);
+       System.out.print("Digite o CPF/CNPJ do usuário que deseja deletar: ");
+       String cpf_cnpj = in.nextLine();
 
-    Usuario usuario = new Usuario();
-    usuario.setCpf_cnpj(cpf_cnpj);
+       Usuario usuario = new Usuario();
+       usuario.setCpf_cnpj(cpf_cnpj);
 
-    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-    try {
-        usuarioDAO.deletarUsuarioBD(usuario);
-    } catch (SQLException e) {
-        System.out.println("Erro ao deletar usuário: " + e.getMessage());
+       try {
+           usuarioDAO.deletarUsuarioBD(usuario);
+      }catch (SQLException e) {
+           System.out.println("Erro ao deletar usuário: " + e.getMessage());
+        }
     }
-}
 
 }
