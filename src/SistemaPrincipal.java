@@ -1,7 +1,9 @@
 import Sistema.Model.Cliente;
 import Sistema.Model.Usuario;
+import Sistema.dao.Conexao;
 import Sistema.view.*;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +15,7 @@ public class SistemaPrincipal {
     private static final int OP_PAGAMENTO = 4;
     private static final int OP_BOLETO = 5;
     private static final int OP_VOLTAR = 9;
+    private static final int CONEXAO_BD = 10;
 
     public static void main(String[] args) {
 
@@ -29,6 +32,10 @@ public class SistemaPrincipal {
                     op = obterEntradaSistema(in);
 
                     switch (op) {
+                        case CONEXAO_BD:
+                            Connection conn = Conexao.conectarBD();
+                            System.out.println("Conexão com o banco de dados realizada com sucesso!");break;
+
                         case OP_USUARIO:
                             UsuarioMenu.usuarioMenu();
                             break;
@@ -63,7 +70,8 @@ public class SistemaPrincipal {
                     + "\n " + OP_PRODUTO + " - 3. Gerenciar Produtos"
                     + "\n " + OP_PAGAMENTO + " - 4. Gerenciar Pagamentos"
                     + "\n " + OP_BOLETO + " - 5. Gerenciar Boletos"
-                    + "\n " + OP_VOLTAR + " - 9. Fechar Sistema");
+                    + "\n " + OP_VOLTAR + " - 9. Fechar Sistema"
+                    +" \n " + CONEXAO_BD + " - 10 Teste BD");
         }
 
         private static int obterEntradaSistema (Scanner in){

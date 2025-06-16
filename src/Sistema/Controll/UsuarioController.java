@@ -1,17 +1,15 @@
 package Sistema.Controll;
 
 import Sistema.Model.Usuario;
+import Sistema.dao.UsuarioDAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 
 public class UsuarioController {
-
-    private final List<Usuario> usuarios = new ArrayList<>();
-
 
     public static void usuarioTeste(List<Usuario> usuarios) {
         Usuario novoUsuario = new Usuario("Junior", "jujuba@outlook.com", "123", Usuario.gerarCpf(), "21/10/2000");
@@ -41,78 +39,101 @@ public class UsuarioController {
         Usuario novoUsuario = new Usuario(nome, cpf_cnpj, senha, email, dataNascimento);
         usuarios.add(novoUsuario);
         System.out.println("Usuário cadastrado com sucesso!");
+         UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+        try {
+           usuarioDAO.salvarUsuario(novoUsuario);
+        } catch (SQLException e) {
+           System.out.println("Erro ao salvar no banco: " + e.getMessage());
+         }
     }
 
-    public static void mostraUsuarios(List<Usuario> usuarios) {
-       for(Usuario usuario : usuarios){
-           System.out.println(usuario.toString());
-       }
-    }
+   public static void mostraUsuarios() {
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-    public static void atualizarUsuario(List<Usuario> usuarios) {
-        Scanner in = new Scanner(System.in);
+    try {
+        ArrayList<Usuario> usuarios = usuarioDAO.lerDadosBD();
 
-        System.out.println("Digite o email do Usuário");
-        String email = in.nextLine();
-
-        if (email.contains("@") && email.endsWith(".com")) {
-            boolean usuarioEncontrado = false;
-
-            for (Usuario usuario : usuarios) {
-                if (usuario.getEmail().equals(email)) {
-                    usuarioEncontrado = true;
-                    System.out.println("Olá " + usuario.getNome() + ", O que deseja alterar?");
-                    System.out.println("1 - Nome de Usuário" +
-                            "\n2 - Senha");
-
-                    int op = Integer.parseInt(in.nextLine());
-
-                    if (op == 1) {
-                        System.out.println("Digite o novo nome de usuário:");
-                        String novoNome = in.nextLine();
-                        usuario.setNome(novoNome);
-                        System.out.println("Nome atualizado com sucesso!");
-
-                    } else if (op == 2) {
-                        System.out.println("Digite a nova senha:");
-                        String novaSenha = in.nextLine();
-                        usuario.setSenha(novaSenha);
-                        System.out.println("Senha atualizada com sucesso!");
-
-                    } else {
-                        System.out.println("Opção inválida.");
-                    }
-                    break;
-                }
-            }
-            if (!usuarioEncontrado) {
-                System.out.println("Usuário com o email " + email + " não encontrado.");
-            }
+        if (usuarios.isEmpty()) {
+            System.out.println("Nenhum usuário encontrado no banco de dados.");
         } else {
-            System.out.println("Email inválido. O email deve conter '@' e terminar com '.com'.");
+            for (Usuario usuario : usuarios) {
+                System.out.println(usuario);
+            }
         }
+
+    } catch (SQLException e) {
+        System.out.println("Erro ao ler usuários do banco: " + e.getMessage());
     }
+}
 
 
-    public static void deletarUsuario(List<Usuario> usuarios) {
-        Scanner in = new Scanner(System.in);
-        System.out.print("Digite o CPF/CNPJ do usuário que deseja deletar: ");
-        String cpf_cnpj = in.nextLine();
+    public static void atualizarUsuario() {
+    Scanner in = new Scanner(System.in);
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
 
-        Iterator<Usuario> iterator = usuarios.iterator();
-        boolean usuarioDeletado = false;
+    System.out.print("Digite o ID do usuário que deseja alterar: ");
+    int id = Integer.parseInt(in.nextLine());
 
-        while (iterator.hasNext()) {
-            Usuario usuario = iterator.next();
-            if (usuario.getCpf_cnpj().equals(cpf_cnpj)) {
-                iterator.remove();
-                usuarioDeletado = true;
-                System.out.println("Usuário com CPF/CNPJ " + cpf_cnpj + " deletado com sucesso.");
+    try {
+        ArrayList<Usuario> usuarios = usuarioDAO.lerDadosBD();
+        boolean usuarioEncontrado = false;
+
+        for (Usuario usuario : usuarios) {
+            if (usuario.getUsuarioId() == id) {
+                usuarioEncontrado = true;
+
+                System.out.println("Olá " + usuario.getNome() + ", o que deseja alterar?");
+                System.out.println("1 - Nome de Usuário\n2 - Senha");
+
+                int op = Integer.parseInt(in.nextLine());
+
+                if (op == 1) {
+                    System.out.print("Digite o novo nome de usuário: ");
+                    String novoNome = in.nextLine();
+                    usuario.setNome(novoNome);
+
+                } else if (op == 2) {
+                    System.out.print("Digite a nova senha: ");
+                    String novaSenha = in.nextLine();
+                    usuario.setSenha(novaSenha);
+
+                } else {
+                    System.out.println("Opção inválida.");
+                    return;
+                }
+
+                usuarioDAO.alterarUsuario(usuario); 
+                System.out.println("Usuário atualizado com sucesso!");
                 break;
             }
         }
-        if (!usuarioDeletado) {
-            System.out.println("Usuário com CPF/CNPJ " + cpf_cnpj + " não encontrado.");
+
+        if (!usuarioEncontrado) {
+            System.out.println("Usuário com ID " + id + " não encontrado.");
         }
+
+    } catch (SQLException e) {
+        System.out.println("Erro ao atualizar usuário: " + e.getMessage());
     }
+}
+
+
+  public static void deletarUsuario() {
+    Scanner in = new Scanner(System.in);
+    System.out.print("Digite o CPF/CNPJ do usuário que deseja deletar: ");
+    String cpf_cnpj = in.nextLine();
+
+    Usuario usuario = new Usuario();
+    usuario.setCpf_cnpj(cpf_cnpj);
+
+    UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+    try {
+        usuarioDAO.deletarUsuarioBD(usuario);
+    } catch (SQLException e) {
+        System.out.println("Erro ao deletar usuário: " + e.getMessage());
+    }
+}
+
 }

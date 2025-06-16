@@ -90,7 +90,7 @@ public class BoletoController {
 
             exibirInformacoesBoleto(boleto);
 
-            if (!isBoletoVencido(boleto)) {  // Se não está vencido
+            if (!isBoletoVencido(boleto)) { 
                 System.out.println("Boleto não Vencido\n---------------");
 
                 double valorTotal = boleto.getPagamentos().stream()
@@ -118,7 +118,7 @@ public class BoletoController {
 
             } else {
                 System.out.println("Boleto Vencido - URGENTE");
-                double valorComJuros = boleto.getValorCompra() * 1.05;  // Aumento de 5% no valor total
+                double valorComJuros = boleto.getValorCompra() * 1.05; 
                 double valorParcelaComJuros = valorComJuros / boleto.getNumParcelas();
 
                 for (int parcela = 1; parcela <= boleto.getNumParcelas(); parcela++) {

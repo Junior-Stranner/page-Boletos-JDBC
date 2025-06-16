@@ -2,7 +2,6 @@ package Sistema.view;
 
 import Sistema.Controll.ProdutoController;
 import Sistema.Model.Cliente;
-import Sistema.Model.Produto;
 import Sistema.Model.Usuario;
 
 import java.util.List;

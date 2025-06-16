@@ -16,7 +16,7 @@ public class UsuarioDAO {
             stmt.setString(2, usuario.getEmail());
             stmt.setString(3, usuario.getSenha());
             stmt.setString(4, usuario.getCpf_cnpj());
-            stmt.setString(5, usuario.getDataNascimento());
+            stmt.setDate(5, Date.valueOf(usuario.getDataNascimento()));
 
             stmt.executeUpdate();
             System.out.println("Usuário salvo com sucesso!");
